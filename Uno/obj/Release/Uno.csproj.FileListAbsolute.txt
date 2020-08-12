@@ -21,3 +21,17 @@ Z:\SDD\Projects\Uno\Uno\obj\Release\Uno.exe.manifest
 Z:\SDD\Projects\Uno\Uno\obj\Release\Uno.application
 Z:\SDD\Projects\Uno\Uno\obj\Release\Uno.exe
 Z:\SDD\Projects\Uno\Uno\obj\Release\Uno.pdb
+F:\Uno\Uno\Uno\obj\Release\Uno.csprojAssemblyReference.cache
+F:\Uno\Uno\Uno\obj\Release\Uno.AboutBox.resources
+F:\Uno\Uno\Uno\obj\Release\Uno.GameOptionsView.resources
+F:\Uno\Uno\Uno\obj\Release\Uno.GameView.resources
+F:\Uno\Uno\Uno\obj\Release\Uno.Help.resources
+F:\Uno\Uno\Uno\obj\Release\Uno.Properties.Resources.resources
+F:\Uno\Uno\Uno\obj\Release\Uno.SortedPlayersView.resources
+F:\Uno\Uno\Uno\obj\Release\Uno.SortedPlayerView.resources
+F:\Uno\Uno\Uno\obj\Release\Uno.StartupDisplay.resources
+F:\Uno\Uno\Uno\obj\Release\Uno.StartupPlayerView.resources
+F:\Uno\Uno\Uno\obj\Release\Uno.WildColorChooser.resources
+F:\Uno\Uno\Uno\obj\Release\Uno.csproj.GenerateResource.cache
+F:\Uno\Uno\Uno\obj\Release\Uno.exe
+F:\Uno\Uno\Uno\obj\Release\Uno.pdb
