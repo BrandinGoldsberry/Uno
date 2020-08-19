@@ -723,7 +723,12 @@ namespace Uno
         /// </summary>
         private void makeComputerMove(bool computerOnlyOverride)
         {
-
+            if (game.NumberOfPlayingPlayers == 1)
+            {
+                // Close the game view
+                gameView.Close();
+                return;
+            }
             // Stop if for some reason this method got called when it's actually a human
             if (game.CurrentPlayer.Type == Player.PlayerType.Human && !computerOnlyOverride)
                 return;
