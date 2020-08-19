@@ -81,6 +81,11 @@ namespace Uno
             Skip,
 
             /// <summary>
+            /// A skip all card that skips everyone and comes back to you
+            /// </summary>
+            SkipAll,
+
+            /// <summary>
             /// A reverse card
             /// </summary>
             Reverse,
