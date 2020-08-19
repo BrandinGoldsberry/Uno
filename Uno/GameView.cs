@@ -29,6 +29,9 @@ namespace Uno
         // Is this the first time the view has been drawn?
         bool first = true;
 
+        // Doesn't prompt the user to close the form
+        public bool closeGameWithoutDialog = false;
+
         // Has the player confirmed closing the form?
         bool confirmedClose = false;
 
@@ -113,7 +116,10 @@ namespace Uno
 
         void GameView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!confirmedClose)
+            if (closeGameWithoutDialog)
+            {
+                confirmedClose = true;
+            } else if (!confirmedClose)
             {
                 DialogResult result = MessageBox.Show(this, "Are you sure you want to close this Uno game?", "Close Uno Game", MessageBoxButtons.OKCancel);
 

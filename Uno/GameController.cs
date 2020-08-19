@@ -134,7 +134,19 @@ namespace Uno
             computerPlayerTimer.Tick += new EventHandler(computerPlayerTimer_Tick);
     
             // Show the game view
-            gameView.Show();            
+            gameView.Show();
+            
+            if (game.NumberOfPlayingPlayers == 1)
+            {
+                // Show the final results
+                Program.NewSortedPlayersView(game);
+
+                // Setting this bool to true to end the game without dialog box
+                gameView.closeGameWithoutDialog = true;
+
+                // Close the game view
+                gameView.Close();
+            }
         }
 
 
@@ -211,6 +223,18 @@ namespace Uno
                 // If the player is now finished, give them a rank
                 if (game.CurrentGamePlayer.Finished)
                     game.CurrentGamePlayer.FinishRank = game.NumberOfFinishedPlayers - 1;
+
+                if (game.NumberOfPlayingPlayers == 1)
+                {
+                    // Show the final results
+                    Program.NewSortedPlayersView(game);
+
+                    // Setting this bool to true to end the game without dialog box
+                    gameView.closeGameWithoutDialog = true;
+
+                    // Close the game view
+                    gameView.Close();
+                }
 
                 // Setup next player, and update the game view
                 nextPlayer();
@@ -679,12 +703,18 @@ namespace Uno
         /// </summary>
         private void startComputerMove()
         {
-            
 
+            if (game.NumberOfPlayingPlayers == 1)
+            {
+                // Close the game view
+                gameView.Close();
+            }
             // Check the next player actually is a computer
-            if(game.CurrentPlayer.Type != Player.PlayerType.Human)
+            else if (game.CurrentPlayer.Type != Player.PlayerType.Human)
+            {
                 // Start a timer to add some delay before the computer moves
                 computerPlayerTimer.Start();
+            }
         }
 
 
