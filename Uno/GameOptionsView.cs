@@ -45,6 +45,7 @@ namespace Uno
 
                 options.AllowDraw4Always = allowDraw4.Checked;
                 options.SwapHandsWith0 = swapWith0.Checked;
+                options.SwapHandsWith7 = swapWith7.Checked;
 
                 return options;
             }
