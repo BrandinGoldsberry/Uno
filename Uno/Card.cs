@@ -340,6 +340,10 @@ namespace Uno
                     ret = "s";
                     break;
 
+                case CardFace.SkipAll:
+                    ret = "sa";
+                    break;
+
             }
 
 
@@ -355,6 +359,7 @@ namespace Uno
         /// <returns></returns>
         public static string StringForCard(CardColor color, CardFace face)
         {
+            Console.WriteLine(CardColorToString(color) + CardFaceToString(face));
             return CardColorToString(color) + CardFaceToString(face);
         }
 
@@ -371,7 +376,33 @@ namespace Uno
             if (!IsValidCard(color, face)) return Properties.Resources.back;
 
             string card = StringForCard(color, face);
-            return (Image)Properties.Resources.ResourceManager.GetObject(card);
+            Console.WriteLine(card);
+
+            if (card.Equals("bsa"))
+            {
+                //return Properties.Resources.bsa;
+                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\bsa.png");
+            }
+            else if (card.Equals("gsa"))
+            {
+                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\gsa.png");
+                //return Properties.Resources.gsa;
+            }
+            else if (card.Equals("rsa"))
+            {
+                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\rsa.png");
+                //return Properties.Resources.rsa;
+            }
+            else if (card.Equals("ysa"))
+            {
+                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\ysa.png");
+                //return Properties.Resources.ysa;
+            }
+            else
+            {
+                return (Image)Properties.Resources.ResourceManager.GetObject(card);
+            }
+
         }
 
 
@@ -414,6 +445,7 @@ namespace Uno
                 case CardFace.Draw2:
                 case CardFace.Reverse:
                 case CardFace.Skip:
+                case CardFace.SkipAll:
                     value = 20;
                     break;
                 case CardFace.None:

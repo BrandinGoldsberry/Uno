@@ -219,7 +219,17 @@ namespace Uno.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bsa {
+            get {
+                object obj = ResourceManager.GetObject("bsa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
@@ -419,7 +429,19 @@ namespace Uno.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gsa
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("gsa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
@@ -639,7 +661,19 @@ namespace Uno.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rsa
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("rsa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
@@ -816,6 +850,18 @@ namespace Uno.Properties {
         internal static System.Drawing.Bitmap ys {
             get {
                 object obj = ResourceManager.GetObject("ys", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ysa
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ysa", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

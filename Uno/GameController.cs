@@ -32,7 +32,7 @@ namespace Uno
             /// The card does not belong to the current player
             /// </summary>
             IncorrectPlayer,
-            
+
             /// <summary>
             /// The card is actually in the discard pile
             /// </summary>
@@ -70,9 +70,11 @@ namespace Uno
 
         private int cardsToDraw = 0;
         private bool skip = false;
+        private bool skipAll = false;
+        private int numberOfPeopleToSkip = 0;
 
         private Timer computerPlayerTimer = new Timer();
-        
+
 
 
         ///////////////////////////////////////////////////////////////////////////////////////
@@ -107,7 +109,7 @@ namespace Uno
             // Setup the uno deck
             game.Deck = GenerateUnoDeck();
             shuffleDeck();
-            
+
             // Create a new game view
             gameView = new GameView(game, this);
             gameView.FormClosed += new FormClosedEventHandler(gameView_FormClosed);
@@ -132,10 +134,10 @@ namespace Uno
             // Setup the computer player delay timer
             computerPlayerTimer.Interval = game.Options.ComputerPlayerDelay;
             computerPlayerTimer.Tick += new EventHandler(computerPlayerTimer_Tick);
-    
+
             // Show the game view
             gameView.Show();
-            
+
             if (game.NumberOfPlayingPlayers == 1)
             {
                 // Show the final results
@@ -166,13 +168,13 @@ namespace Uno
             // Don't let humans play on behalf of the computer!
             if (game.CurrentPlayer.Type != Player.PlayerType.Human)
                 return CardPlayStatus.ComputerPlayer;
-                
-            
+
+
             // Check if the card can be played before asking for wild colour
             CardPlayStatus wildCheckStatus = CanPlayCardStatus(card);
             if (wildCheckStatus != CardPlayStatus.Success)
                 return wildCheckStatus;
-            
+
             // Ask for the color for a wild card
             if (card.Color == Card.CardColor.Wild)
             {
@@ -216,7 +218,7 @@ namespace Uno
 
                 // Perform action on action cards
                 performAction(card);
-                
+
                 // Add to number of cards played statistic
                 game.CurrentGamePlayer.NumberOfCardsPlayed++;
 
@@ -242,7 +244,7 @@ namespace Uno
             }
 
             return status;
-            
+
         }
 
 
@@ -368,7 +370,7 @@ namespace Uno
                     success = CardPlayStatus.IncorrectPlayer;
             }
 
-            
+
             return success;
         }
 
@@ -402,13 +404,13 @@ namespace Uno
         }
 
 
-        
+
         /// <summary>
         /// Deal cards to each player and to the discard pile
         /// </summary>
         private void dealCards()
         {
-                       
+
             // Continue until the last player has the required number of cards
             while ((game.PlayersCards[game.Players.Last()] as Game.GamePlayer).Cards.Count < game.Options.CardsForEachPlayer)
             {
@@ -419,7 +421,7 @@ namespace Uno
                     (p.Value as Game.GamePlayer).Cards.Add(game.Deck[0]);
 
                     // Remove from deck
-                    game.Deck.RemoveAt(0);   
+                    game.Deck.RemoveAt(0);
                 }
             }
 
@@ -431,7 +433,7 @@ namespace Uno
                 game.Deck.RemoveAt(0);
             }
             while (game.CurrentCard.Color == Card.CardColor.Wild);
-            
+
         }
 
 
@@ -485,29 +487,53 @@ namespace Uno
 
         private void nextPlayer()
         {
-            // Stop if the game is all finished
-            if (game.Finished)
-                return;
 
-
-            // Move onto the next player
-            game.CurrentPlayerIndex = getNextPlayerIndex(game.CurrentPlayerIndex);
-
-            // Check if the player is actually already finished (but the whole game isn't)
-            if (game.CurrentGamePlayer.Finished)
+            if (skipAll)
             {
-                nextPlayer();
-                return;
+                skipAll = false;
+                // Stop if the game is all finished
+                if (game.Finished)
+                    return;
+
+                // Check if the player is actually already finished (but the whole game isn't)
+                if (game.CurrentGamePlayer.Finished)
+                {
+                    nextPlayer();
+                    return;
+                }
+
+
+                // Do the actions required for the action cards
+                handleActions();
+
+
+                // Get ready for the next player
+                setupCurrentPlayer();
+            } else
+            {
+                // Stop if the game is all finished
+                if (game.Finished)
+                    return;
+
+
+                // Move onto the next player
+                game.CurrentPlayerIndex = getNextPlayerIndex(game.CurrentPlayerIndex);
+
+                // Check if the player is actually already finished (but the whole game isn't)
+                if (game.CurrentGamePlayer.Finished)
+                {
+                    nextPlayer();
+                    return;
+                }
+
+
+                // Do the actions required for the action cards
+                handleActions();
+
+
+                // Get ready for the next player
+                setupCurrentPlayer();
             }
-
-
-            // Do the actions required for the action cards
-            handleActions();
-            
-
-            // Get ready for the next player
-            setupCurrentPlayer();
-
 
         }
 
@@ -575,7 +601,7 @@ namespace Uno
 #endif
 
             // Don't allow when the discard pile is already very empty
-            if(Game.DiscardPile.Count < 2)
+            if (Game.DiscardPile.Count < 2)
                 // Report failure
                 return false;
 
@@ -619,12 +645,16 @@ namespace Uno
                     skip = true;
                     break;
 
+                case Card.CardFace.SkipAll:
+                    skipAll = true;
+                    break;
+
                 case Card.CardFace.Reverse:
                     reverse();
                     break;
 
                 case Card.CardFace.Zero:
-                    if(game.Options.SwapHandsWith0)
+                    if (game.Options.SwapHandsWith0)
                         swapAllPlayerHands();
                     break;
             }
@@ -642,6 +672,13 @@ namespace Uno
             {
                 skip = false;
                 nextPlayer();
+                return;
+            }
+
+            // Skip every player if a skipAll card was played
+            if (skipAll)
+            {
+                skipAll = false;
                 return;
             }
 
@@ -735,7 +772,7 @@ namespace Uno
 
             // Set a flag to check if it should be smart (easier than referencing the type all the time)
             bool smart = game.CurrentPlayer.Type == Player.PlayerType.SmartComputer;
-            
+
             // Make cards easier to access
             List<Card> cards = game.CurrentGamePlayer.Cards;
 
@@ -748,7 +785,7 @@ namespace Uno
             if (smart)
             {
                 // Look for cards the same color
-                foreach(Card c in cards)
+                foreach (Card c in cards)
                 {
                     if (CanPlayCard(c) && game.CurrentColor == c.Color)
                         playableCards.Add(c);
@@ -817,13 +854,13 @@ namespace Uno
                         // Reset the color counts
                         for (int i = 0; i < Card.NUMBEROFCOLORS - 1; i++)
                         {
-                            colorCounts.Add((Card.CardColor)i,0);
+                            colorCounts.Add((Card.CardColor)i, 0);
                         }
 
                         // Add 1 to the count of the color for each card
                         foreach (Card c in cards)
                         {
-                            if(c.Color != Card.CardColor.Wild)
+                            if (c.Color != Card.CardColor.Wild)
                                 colorCounts[c.Color]++;
                         }
 
@@ -831,14 +868,14 @@ namespace Uno
                         greatestColor = (Card.CardColor)0;
 
                         // Look for the greatest color
-                        for (int i = 1; i < (Card.NUMBEROFCOLORS-1); i++)
+                        for (int i = 1; i < (Card.NUMBEROFCOLORS - 1); i++)
                         {
                             if (colorCounts[greatestColor] < colorCounts[(Card.CardColor)i])
                                 greatestColor = (Card.CardColor)i;
                         }
 
                         // If more than one color has the highest number of cards, choose it
-                        for (int i = 0; i < (Card.NUMBEROFCOLORS -1); i++)
+                        for (int i = 0; i < (Card.NUMBEROFCOLORS - 1); i++)
                         {
                             if (colorCounts[(Card.CardColor)i] == colorCounts[greatestColor])
                                 colorsToChoose.Add((Card.CardColor)i);
@@ -864,7 +901,7 @@ namespace Uno
                 // Pickup a card if there's nothing else to play
                 PickupCard(true);
             }
-        
+
         }
 
 
@@ -895,12 +932,12 @@ namespace Uno
 
             for (int i = 0; i < game.NumberOfPlayingPlayers; i++)
             {
-                if(i<game.NumberOfPlayingPlayers-1)
+                if (i < game.NumberOfPlayingPlayers - 1)
                     (game.PlayersCards[game.Players[index]] as Game.GamePlayer).Cards = (game.PlayersCards[game.Players[getNextPlayingPlayerIndex(index, true)]] as Game.GamePlayer).Cards;
                 else
                     (game.PlayersCards[game.Players[index]] as Game.GamePlayer).Cards = temp;
 
-                
+
                 index = getNextPlayingPlayerIndex(index, true);
             }
         }
@@ -978,9 +1015,9 @@ namespace Uno
                 {
                     // Loop to make 2 of each face card for the selected color, but only one 0 (standard Uno deck)
                     // only count from 0-12 to exclude draw 4
-                    for (int k = 0; k < 13; k++)
+                    for (int k = 0; k < 14; k++)
                     {
-                        deck.Add(new Card(color, (Card.CardFace)k));    
+                        deck.Add(new Card(color, (Card.CardFace)k));
 
                         // Add the second idenical card, except for 0s
                         if (k != 0)
