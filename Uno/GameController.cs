@@ -212,9 +212,17 @@ namespace Uno
                 if (game.CurrentGamePlayer.Finished)
                     game.CurrentGamePlayer.FinishRank = game.NumberOfFinishedPlayers - 1;
 
-                // Setup next player, and update the game view
-                nextPlayer();
-                gameView.ReDraw();
+                //if a 7 card was played, DO NOT go to next player, and redraw the screen
+                if(game.Options.SwapHandsWith7 && game.CurrentCard.Face == Card.CardFace.Seven)
+                {
+                    gameView.ReDraw();
+                }
+                else
+                {
+                    // Setup next player, and update the game view
+                    nextPlayer();
+                    gameView.ReDraw();
+                }
             }
 
             return status;
@@ -603,6 +611,11 @@ namespace Uno
                     if(game.Options.SwapHandsWith0)
                         swapAllPlayerHands();
                     break;
+
+                case Card.CardFace.Seven:
+                    if (game.Options.SwapHandsWith7)
+                        SwapHandsOnSeven();
+                    break;
             }
         }
 
@@ -870,6 +883,58 @@ namespace Uno
             }
         }
 
+        private void PlayerSwapHands(int? PlayerIndex)
+        {
+            int Player = PlayerIndex ?? default;
+            Game.GamePlayer TargetPlayer = game.PlayersCards[game.Players[Player]] as Game.GamePlayer;
+            Game.GamePlayer CurrentPlayer = game.PlayersCards[game.Players[game.CurrentPlayerIndex]] as Game.GamePlayer;
+
+            List<Card> targetPlayerCards = TargetPlayer.Cards;
+            List<Card> currentPlayerCards = CurrentPlayer.Cards;
+
+            TargetPlayer.Cards = currentPlayerCards;
+            CurrentPlayer.Cards = targetPlayerCards;
+            nextPlayer();
+            gameView.ReDraw();
+        }
+
+        public void SwapHandsOnSeven()
+        {
+            if(game.CurrentPlayer.Type == Player.PlayerType.Computer)
+            {
+                int smallestHand = int.MaxValue;
+                int handOwner = -1;
+                for(int i = 0; i < game.PlayersCards.Count; i++)
+                {
+                    Game.GamePlayer currentPlayerCheck = (Game.GamePlayer)game.PlayersCards[game.Players[i]];
+                    if (currentPlayerCheck.Player.Name == game.CurrentPlayer.Name)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        if(smallestHand > currentPlayerCheck.Cards.Count)
+                        {
+                            handOwner = i;
+                            smallestHand = currentPlayerCheck.Cards.Count;
+                        }
+                    }
+                }
+                if(handOwner != -1)
+                {
+                    PlayerSwapHands(handOwner);
+                }
+            }
+            else
+            {
+                HandSwapSelect handSwapSelect = new HandSwapSelect(game.NumberOfPlayers, game.CurrentPlayerIndex);
+                DialogResult result = handSwapSelect.ShowDialog();
+                if(result == DialogResult.OK)
+                {
+                    PlayerSwapHands(handSwapSelect.ClickResult);
+                }
+            }
+        }
 
         ///////////////////////////////////////////////////////////////////////////////////////
         // Static Methods
