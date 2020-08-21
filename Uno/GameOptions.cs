@@ -30,6 +30,7 @@ namespace Uno
 
         // Optional Rules
         public bool SwapHandsWith0          { get; set; }
+        public bool SwapHandsWith7          { get; set; }
         public bool AllowDraw4Always        { get; set; }
         //public bool AllowPickupPutDown    { get; set; }
         //public bool AllowDrawStacking     { get; set; }

@@ -158,7 +158,7 @@ namespace Uno
 
 
         /// <summary>
-        /// Choose a card for the current player to play
+        /// Choose a card for the current play to play
         /// </summary>
         /// <param name="card"></param>
         public CardPlayStatus SelectCard(Card card)
@@ -195,14 +195,14 @@ namespace Uno
             }
 
             // Play the card, with the selected wild color already set if necessary
-            return SelectCard(card, game.CurrentPlayer, false);
+            return PlaySelectedCard(card);
         }
 
 
         /// <summary>
         /// Choose a card for the current player to play
         /// </summary>
-        public CardPlayStatus SelectCard(Card card, Player player, bool computer)
+        public CardPlayStatus PlaySelectedCard(Card card)
         {
             // Check if the card  is allowed to be played
             CardPlayStatus status = CanPlayCardStatus(card);
@@ -857,7 +857,7 @@ namespace Uno
                 }
 
                 // Play the card
-                SelectCard(selectedCard, game.CurrentPlayer, true);
+                PlaySelectedCard(selectedCard);
             }
             else
             {

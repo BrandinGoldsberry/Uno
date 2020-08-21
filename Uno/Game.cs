@@ -463,6 +463,13 @@ namespace Uno
                 player = inputPlayer;
             }
 
+            public void SwapHandsWithPlayer(GamePlayer ToSwap)
+            {
+                List<Card> CardHolder = ToSwap.cards;
+                ToSwap.cards = cards;
+                cards = CardHolder;
+            }
+
         }
 
 
