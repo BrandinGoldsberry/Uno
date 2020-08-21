@@ -4,49 +4,6 @@
         <name>Uno</name>
     </assembly>
     <members>
-        <member name="F:Uno.GameView.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:Uno.GameView.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:Uno.GameView.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="M:Uno.GameView.ReDraw">
-            <summary>
-            Updates the game view form to present the current state of the game
-            </summary>
-        </member>
-        <member name="M:Uno.GameView.AnimateMotion(System.Windows.Forms.Control,System.Int32,System.Int32,Projectplace.Gui.Tweener.ease,System.Int32)">
-            <summary>
-            Animate the movement of a control. Does not check if animation is enabled or not
-            </summary>
-            <param name="control"></param>
-            <param name="left"></param>
-            <param name="top"></param>
-            <param name="easingFunction"></param>
-            <param name="time"></param>
-        </member>
-        <member name="M:Uno.GameView.moveControlTo(System.Windows.Forms.Control,System.Int32,System.Int32,Projectplace.Gui.Tweener.ease,System.Boolean,System.Int32)">
-            <summary>
-            Animate moving a control to a new position
-            </summary>
-            <param name="card"></param>
-            <param name="left"></param>
-            <param name="top"></param>
-            <param name="easingFunction"></param>
-            <param name="useAnimation"></param>
-            <param name="time"></param>
-        </member>
         <member name="F:Uno.AboutBox.components">
             <summary>
             Required designer variable.
@@ -63,336 +20,94 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="F:Uno.StartupPlayerView.components">
-            <summary> 
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:Uno.StartupPlayerView.Dispose(System.Boolean)">
-            <summary> 
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:Uno.StartupPlayerView.InitializeComponent">
-            <summary> 
-            Required method for Designer support - do not modify 
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="M:Uno.StartupPlayerView.SetPlayerName(System.String)">
-            <summary>
-            Set the name of the player
-            </summary>
-            <param name="input"></param>
-        </member>
-        <member name="P:Uno.StartupPlayerView.Player">
-            <summary>
-             The player object 
-            </summary>
-        </member>
-        <member name="T:Uno.Properties.Resources">
-            <summary>
-              A strongly-typed resource class, for looking up localized strings, etc.
-            </summary>
-        </member>
-        <member name="P:Uno.Properties.Resources.ResourceManager">
-            <summary>
-              Returns the cached ResourceManager instance used by this class.
-            </summary>
-        </member>
-        <member name="P:Uno.Properties.Resources.Culture">
-            <summary>
-              Overrides the current thread's CurrentUICulture property for all
-              resource lookups using this strongly typed resource class.
-            </summary>
-        </member>
-        <member name="T:Uno.Game">
-            <summary>
-            Stores the data about the game
-            </summary>
-        </member>
-        <member name="F:Uno.Game.MAXPLAYERS">
-            <summary>
-            Max number of players allowed in a Uno game
-            </summary>
-        </member>
-        <member name="F:Uno.Game.MAXUNOCARDS">
-            <summary>
-            The number of cards in a Uno deck
-            </summary>
-        </member>
-        <member name="F:Uno.Game.deck">
-            <summary>
-            Array of cards to be dealt to other players, then used as the discard pile
-            </summary>
-        </member>
-        <member name="F:Uno.Game.players">
-            <summary>
-            The Players
-            </summary>
-        </member>
-        <member name="F:Uno.Game.playersCards">
-            <summary>
-            Hash table containing players and the Game.Player objects, which contains data about the current game
-            </summary>
-        </member>
-        <member name="F:Uno.Game.options">
-            <summary>
-            Game options object
-            </summary>
-        </member>
-        <member name="F:Uno.Game.discardPile">
-            <summary>
-            The discard pile
-            </summary>
-        </member>
-        <member name="F:Uno.Game.currentPlayerIndex">
-            <summary>
-            Index of the current player
-            </summary>
-        </member>
-        <member name="F:Uno.Game.previousPlayer">
-            <summary>
-            The previous player to play
-            </summary>
-        </member>
-        <member name="F:Uno.Game.reverse">
-            <summary>
-            Is the play order reversed?
-            </summary>
-        </member>
-        <member name="F:Uno.Game.wildColor">
-            <summary>
-            The selected color for the last Wild card
-            </summary>
-        </member>
-        <member name="M:Uno.Game.#ctor">
-            <summary>
-            Create a new game
-            </summary>
-        </member>
-        <member name="M:Uno.Game.#ctor(System.Collections.Generic.List{Uno.Player},Uno.GameOptions)">
-            <summary>
-            Create a new game with players and options
-            </summary>
-            <param name="gamePlayers"></param>
-            <param name="gameOptions"></param>
-        </member>
-        <member name="P:Uno.Game.Players">
-            <summary>
-            The players
-            </summary>
-        </member>
-        <member name="P:Uno.Game.PlayersCards">
-            <summary>
-            The cards held by each player
-            </summary>
-        </member>
-        <member name="P:Uno.Game.Options">
-            <summary>
-            The Game Options
-            </summary>
-        </member>
-        <member name="P:Uno.Game.Deck">
-            <summary>
-            The cards in the Uno deck, not added to player's hands or the discard pile
-            </summary>
-        </member>
-        <member name="P:Uno.Game.DiscardPile">
-            <summary>
-            The discard pile
-            </summary>
-        </member>
-        <member name="P:Uno.Game.CurrentPlayer">
-            <summary>
-            Current player
-            </summary>
-        </member>
-        <member name="P:Uno.Game.CurrentGamePlayer">
-            <summary>
-            Current GamePlayer
-            </summary>
-        </member>
-        <member name="P:Uno.Game.CurrentPlayerIndex">
-            <summary>
-            Index of the current player
-            </summary>
-        </member>
-        <member name="P:Uno.Game.CurrentCard">
-            <summary>
-            The last card played on the discard pile
-            </summary>
-        </member>
-        <member name="P:Uno.Game.CurrentColor">
-            <summary>
-            Gets the color of the last card played (considering wilds as well)
-            </summary>
-        </member>
-        <member name="P:Uno.Game.CurrentFace">
-            <summary>
-            Gets the current face of the card
-            </summary>
-        </member>
-        <member name="P:Uno.Game.WildColor">
-            <summary>
-            The color selected for the last wild card. Returns wild when the previous card was not wild
-            </summary>
-        </member>
-        <member name="P:Uno.Game.Finished">
-            <summary>
-            Is the game completely finished?
-            </summary>
-        </member>
-        <member name="P:Uno.Game.NumberOfPlayers">
-            <summary>
-            The number of players playing the game
-            </summary>
-        </member>
-        <member name="P:Uno.Game.NumberOfFinishedPlayers">
-            <summary>
-            The number of players that have finished the game
-            </summary>
-        </member>
-        <member name="P:Uno.Game.NumberOfPlayingPlayers">
-            <summary>
-            The number of players that still have cards in the game
-            </summary>
-        </member>
-        <member name="P:Uno.Game.PreviousPlayer">
-            <summary>
-            The previous player to have a turn
-            </summary>
-        </member>
-        <member name="T:Uno.Game.GamePlayer">
-            <summary>
-            Records data about the player in the current game
-            </summary>
-        </member>
-        <member name="M:Uno.Game.GamePlayer.#ctor(Uno.Player)">
-            <summary>
-            Create a new GamePlayer object
-            </summary>
-            <param name="inputPlayer"></param>
-        </member>
-        <member name="P:Uno.Game.GamePlayer.Player">
-            <summary>
-            The player represented
-            </summary>
-        </member>
-        <member name="P:Uno.Game.GamePlayer.Cards">
-            <summary>
-            The cards this player holds
-            </summary>
-        </member>
-        <member name="P:Uno.Game.GamePlayer.Score">
-            <summary>
-            The Player's score for this round
-            </summary>
-        </member>
-        <member name="P:Uno.Game.GamePlayer.Finished">
-            <summary>
-            Is the player finished?
-            </summary>
-        </member>
-        <member name="P:Uno.Game.GamePlayer.NumberOfCardsPickedUp">
-            <summary>
-            The number of cards the player has picked up throught the game
-            </summary>
-        </member>
-        <member name="P:Uno.Game.GamePlayer.NumberOfCardsPlayed">
-            <summary>
-            The number of cards the player has played throught the game
-            </summary>
-        </member>
-        <member name="P:Uno.Game.GamePlayer.NumberOfTurns">
-            <summary>
-            The number of chances the player has had to play
-            </summary>
-        </member>
-        <member name="P:Uno.Game.GamePlayer.FinishRank">
-            <summary>
-            The rank of the player in finishing, where 0 is first, 1 is second, and -1 is not finished yet.
-            </summary>
-        </member>
-        <member name="M:Uno.Help.SelectPage(Uno.Help.HelpPage)">
-            <summary>
-            Select a page to view
-            </summary>
-            <param name="page"></param>
-        </member>
-        <member name="M:Uno.Help.setFocusEventHandler(System.Object,System.EventArgs)">
-            <summary>
-            Handle any events which may require the tab to need focus
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="F:Uno.Help.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:Uno.Help.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:Uno.Help.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="F:Uno.SortedPlayerView.components">
-            <summary> 
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:Uno.SortedPlayerView.Dispose(System.Boolean)">
-            <summary> 
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:Uno.SortedPlayerView.InitializeComponent">
-            <summary> 
-            Required method for Designer support - do not modify 
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="M:Uno.SortedPlayerView.SetMoreDetail(System.Boolean)">
-            <summary>
-            Show or hide the extra detail
-            </summary>
-            <param name="detail"></param>
-        </member>
-        <member name="F:Uno.GameOptionsView.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:Uno.GameOptionsView.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:Uno.GameOptionsView.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="P:Uno.GameOptionsView.Options">
-            <summary>
-            Selected game options
-            </summary>
-        </member>
         <member name="T:Uno.Card">
             <summary>
             Describes a card
+            </summary>
+        </member>
+        <member name="T:Uno.Card.CardColor">
+            <summary>
+            Defines the color of a card.
+            </summary>
+        </member>
+        <member name="F:Uno.Card.CardColor.Red">
+            <summary>
+            Red cards
+            </summary>
+        </member>
+        <member name="F:Uno.Card.CardColor.Yellow">
+            <summary>
+            Yellow Cards
+            </summary>
+        </member>
+        <member name="F:Uno.Card.CardColor.Green">
+            <summary>
+            Green Cards
+            </summary>
+        </member>
+        <member name="F:Uno.Card.CardColor.Blue">
+            <summary>
+            Blue cards
+            </summary>
+        </member>
+        <member name="F:Uno.Card.CardColor.Wild">
+            <summary>   
+            Wild cards
+            </summary>
+        </member>
+        <member name="T:Uno.Card.CardFace">
+            <summary>
+            Defines the face of the card
+            </summary>
+        </member>
+        <member name="F:Uno.Card.CardFace.Draw2">
+            <summary>
+            A draw 2 card
+            </summary>
+        </member>
+        <member name="F:Uno.Card.CardFace.Skip">
+            <summary>
+            A skip card
+            </summary>
+        </member>
+        <member name="F:Uno.Card.CardFace.SkipAll">
+            <summary>
+            A skip all card that skips everyone and comes back to you
+            </summary>
+        </member>
+        <member name="F:Uno.Card.CardFace.Reverse">
+            <summary>
+            A reverse card
+            </summary>
+        </member>
+        <member name="F:Uno.Card.CardFace.Draw4">
+            <summary>
+            A Wild Draw 4 card
+            </summary>
+        </member>
+        <member name="F:Uno.Card.CardFace.None">
+            <summary>
+            No face (a wild card)
+            </summary>
+        </member>
+        <member name="P:Uno.Card.Color">
+            <summary>
+            The color of the card
+            </summary>
+        </member>
+        <member name="P:Uno.Card.Face">
+            <summary>
+            The face of the card
+            </summary>
+        </member>
+        <member name="P:Uno.Card.Image">
+            <summary>
+            The image used to present this card on the interface
+            </summary>
+        </member>
+        <member name="P:Uno.Card.SortingValue">
+            <summary>
+            The value of the card, used only for sorting purposes
             </summary>
         </member>
         <member name="M:Uno.Card.#ctor(Uno.Card.CardColor,Uno.Card.CardFace)">
@@ -481,404 +196,262 @@
             <param name="face">The face value of the card</param>
             <returns>The integer value</returns>
         </member>
-        <member name="P:Uno.Card.Color">
+        <member name="T:Uno.Game">
             <summary>
-            The color of the card
+            Stores the data about the game
             </summary>
         </member>
-        <member name="P:Uno.Card.Face">
+        <member name="F:Uno.Game.MAXPLAYERS">
             <summary>
-            The face of the card
+            Max number of players allowed in a Uno game
             </summary>
         </member>
-        <member name="P:Uno.Card.Image">
+        <member name="F:Uno.Game.MAXUNOCARDS">
             <summary>
-            The image used to present this card on the interface
+            The number of cards in a Uno deck
             </summary>
         </member>
-        <member name="P:Uno.Card.SortingValue">
+        <member name="F:Uno.Game.deck">
             <summary>
-            The value of the card, used only for sorting purposes
+            Array of cards to be dealt to other players, then used as the discard pile
             </summary>
         </member>
-        <member name="T:Uno.Card.CardColor">
+        <member name="F:Uno.Game.players">
             <summary>
-            Defines the color of a card.
+            The Players
             </summary>
         </member>
-        <member name="F:Uno.Card.CardColor.Red">
+        <member name="F:Uno.Game.playersCards">
             <summary>
-            Red cards
+            Hash table containing players and the Game.Player objects, which contains data about the current game
             </summary>
         </member>
-        <member name="F:Uno.Card.CardColor.Yellow">
+        <member name="F:Uno.Game.options">
             <summary>
-            Yellow Cards
+            Game options object
             </summary>
         </member>
-        <member name="F:Uno.Card.CardColor.Green">
+        <member name="F:Uno.Game.discardPile">
             <summary>
-            Green Cards
+            The discard pile
             </summary>
         </member>
-        <member name="F:Uno.Card.CardColor.Blue">
+        <member name="F:Uno.Game.currentPlayerIndex">
             <summary>
-            Blue cards
+            Index of the current player
             </summary>
         </member>
-        <member name="F:Uno.Card.CardColor.Wild">
-            <summary>   
-            Wild cards
-            </summary>
-        </member>
-        <member name="T:Uno.Card.CardFace">
-            <summary>
-            Defines the face of the card
-            </summary>
-        </member>
-        <member name="F:Uno.Card.CardFace.Draw2">
-            <summary>
-            A draw 2 card
-            </summary>
-        </member>
-        <member name="F:Uno.Card.CardFace.Skip">
-            <summary>
-            A skip card
-            </summary>
-        </member>
-        <member name="F:Uno.Card.CardFace.Reverse">
-            <summary>
-            A reverse card
-            </summary>
-        </member>
-        <member name="F:Uno.Card.CardFace.Draw4">
-            <summary>
-            A Wild Draw 4 card
-            </summary>
-        </member>
-        <member name="F:Uno.Card.CardFace.None">
-            <summary>
-            No face (a wild card)
-            </summary>
-        </member>
-        <member name="F:Uno.WildColorChooser.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:Uno.WildColorChooser.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:Uno.WildColorChooser.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="T:Uno.StartupDisplay">
-            <summary>
-            The first form shown
-            </summary>
-        </member>
-        <member name="F:Uno.StartupDisplay.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:Uno.StartupDisplay.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:Uno.StartupDisplay.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="M:Uno.StartupDisplay.StartupDisplay_FormClosed(System.Object,System.Windows.Forms.FormClosedEventArgs)">
-            <summary>
-            Handle the form closed event
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:Uno.StartupDisplay.helpButton_Click(System.Object,System.EventArgs)">
-            <summary>
-            Show the help form with the new game page
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:Uno.GameOptions.ScoringSystemToString(Uno.GameOptions.ScoringSystems)">
+        <member name="F:Uno.Game.previousPlayer">
             <summary>
-            Get a string to display a scoring system value
+            The previous player to play
             </summary>
-            <param name="system"></param>
-            <returns></returns>
         </member>
-        <member name="F:Uno.SortedPlayersView.components">
+        <member name="F:Uno.Game.reverse">
             <summary>
-            Required designer variable.
+            Is the play order reversed?
             </summary>
         </member>
-        <member name="M:Uno.SortedPlayersView.Dispose(System.Boolean)">
+        <member name="F:Uno.Game.wildColor">
             <summary>
-            Clean up any resources being used.
+            The selected color for the last Wild card
             </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="M:Uno.SortedPlayersView.InitializeComponent">
+        <member name="P:Uno.Game.Players">
             <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
+            The players
             </summary>
         </member>
-        <member name="M:Uno.SortedPlayersView.sortPlayersByScore">
+        <member name="P:Uno.Game.PlayersCards">
             <summary>
-            Sort the players
+            The cards held by each player
             </summary>
         </member>
-        <member name="T:Projectplace.Gui.TweenPairs">
+        <member name="P:Uno.Game.Options">
             <summary>
-            Utility class for convenient listing of property=>destination_value "pairs"
-            <example>new TweenPairs() {{"X", 200}, {"Opacity", 0.2}}</example>
+            The Game Options
             </summary>
         </member>
-        <member name="M:Projectplace.Gui.TweenPairs.Add(System.String,System.Single)">
+        <member name="P:Uno.Game.Deck">
             <summary>
-            Add a tweener, and start playing
+            The cards in the Uno deck, not added to player's hands or the discard pile
             </summary>
-            <param name="s"></param>
-            <param name="f"></param>
         </member>
-        <member name="T:Projectplace.Gui.Tweener">
+        <member name="P:Uno.Game.DiscardPile">
             <summary>
-             Statically this class is responsible for managing the life cycle of all registered tweener insances.
-             Instances of the Tweener class are responsible for animating given properties for a given object.
+            The discard pile
             </summary>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.#ctor(System.Object,Projectplace.Gui.TweenPairs,Projectplace.Gui.Tweener.ease,System.Int32,System.Int32)">
+        <member name="P:Uno.Game.CurrentPlayer">
             <summary>
-            Instances of the Tweener class are responsible for animating given properties for a given object.
+            Current player
             </summary>
-            <param name="animated_object">The object to animate</param>
-            <param name="transistions">A list of propertynames and their destination values.</param>
-            <param name="easingFunction">The easing funtion to use for the animation.<see cref="T:Projectplace.Gui.Tweener.ease"/></param>
-            <param name="duration">The duration (in timer ticks) the animation should take to complete.</param>
-            <param name="delay">How long to wait (in timer ticks) before starting the animation.</param>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.#ctor(System.Object,Projectplace.Gui.TweenPairs,Projectplace.Gui.Tweener.ease,System.Int32,System.Int32,Projectplace.Gui.Tweener)">
+        <member name="P:Uno.Game.CurrentGamePlayer">
             <summary>
-            Create a new tweener
+            Current GamePlayer
             </summary>
-            <param name="animated_object"></param>
-            <param name="transitions"></param>
-            <param name="easingFunction"></param>
-            <param name="duration"></param>
-            <param name="delay"></param>
-            <param name="chainedTweener"></param>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.setOnComplete(Projectplace.Gui.Tweener.onCompleteFunction)">
+        <member name="P:Uno.Game.CurrentPlayerIndex">
             <summary>
-            Set a function to execute when the tweener is completed
+            Index of the current player
             </summary>
-            <param name="f"></param>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.add(Projectplace.Gui.Tweener)">
+        <member name="P:Uno.Game.CurrentCard">
             <summary>
-            Register a tweener that this class should manage.
+            The last card played on the discard pile
             </summary>
-            <param name="tweener"></param>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.timer_Tick(System.Object,System.EventArgs)">
+        <member name="P:Uno.Game.CurrentColor">
             <summary>
-            Each timer tick we update all active tweeners.
-            When a tweener is finished we remove it, add any chained tweener and call any onComplete function registred.
+            Gets the color of the last card played (considering wilds as well)
             </summary>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.animate">
+        <member name="P:Uno.Game.CurrentFace">
             <summary>
-            This timer tick's fraction of the transition of the animated object takes place here.
+            Gets the current face of the card
             </summary>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.tween(System.Single,System.Single)">
+        <member name="P:Uno.Game.WildColor">
             <summary>
-            Fetch a value from the easing formula.
+            The color selected for the last wild card. Returns wild when the previous card was not wild
             </summary>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.easeInQuad(System.Single,System.Single,System.Single,System.Single)">
+        <member name="P:Uno.Game.Finished">
             <summary>
-            quadratic (t^2) easingFunction in - accelerating from zero velocity
+            Is the game completely finished?
             </summary>
-            <see cref="T:Projectplace.Gui.Tweener.ease"/>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.easeOutQuad(System.Single,System.Single,System.Single,System.Single)">
+        <member name="P:Uno.Game.NumberOfPlayers">
             <summary>
-            quadratic (t^2) easingFunction out - deccelerating to zero velocity
+            The number of players playing the game
             </summary>
-            <see cref="T:Projectplace.Gui.Tweener.ease"/>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.easeInOutQuad(System.Single,System.Single,System.Single,System.Single)">
+        <member name="P:Uno.Game.NumberOfFinishedPlayers">
             <summary>
-            quadratic easingFunction in/out - acceleration until halfway, then deceleration
+            The number of players that have finished the game
             </summary>
-            <see cref="T:Projectplace.Gui.Tweener.ease"/>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.easeInCubic(System.Single,System.Single,System.Single,System.Single)">
+        <member name="P:Uno.Game.NumberOfPlayingPlayers">
             <summary>
-            cubic easingFunction in - accelerating from zero velocity
+            The number of players that still have cards in the game
             </summary>
-            <see cref="T:Projectplace.Gui.Tweener.ease"/>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.easeOutCubic(System.Single,System.Single,System.Single,System.Single)">
+        <member name="P:Uno.Game.PreviousPlayer">
             <summary>
-            cubic easingFunction out - deccelerating to zero velocity
+            The previous player to have a turn
             </summary>
-            <see cref="T:Projectplace.Gui.Tweener.ease"/>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.easeInOutCubic(System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Uno.Game.#ctor">
             <summary>
-            cubic easingFunction in/out - acceleration until halfway, then deceleration
+            Create a new game
             </summary>
-            <see cref="T:Projectplace.Gui.Tweener.ease"/>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.easeInQuart(System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Uno.Game.#ctor(System.Collections.Generic.List{Uno.Player},Uno.GameOptions)">
             <summary>
-            quartic easingFunction in - accelerating from zero velocity
+            Create a new game with players and options
             </summary>
-            <see cref="T:Projectplace.Gui.Tweener.ease"/>
+            <param name="gamePlayers"></param>
+            <param name="gameOptions"></param>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.easeInExpo(System.Single,System.Single,System.Single,System.Single)">
+        <member name="T:Uno.Game.GamePlayer">
             <summary>
-            exponential (2^t) easingFunction in - accelerating from zero velocity
+            Records data about the player in the current game
             </summary>
-            <see cref="T:Projectplace.Gui.Tweener.ease"/>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.easeOutExpo(System.Single,System.Single,System.Single,System.Single)">
+        <member name="P:Uno.Game.GamePlayer.Player">
             <summary>
-            exponential (2^t) easingFunction out - decelerating to zero velocity
+            The player represented
             </summary>
-            <see cref="T:Projectplace.Gui.Tweener.ease"/>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.easeOutBack(System.Single,System.Single,System.Single,System.Single)">
+        <member name="P:Uno.Game.GamePlayer.Cards">
             <summary>
-            easingFunction past the destination then back - deccelerating to zero
+            The cards this player holds
             </summary>
-            <see cref="T:Projectplace.Gui.Tweener.ease"/>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.linear(System.Single,System.Single,System.Single,System.Single)">
+        <member name="P:Uno.Game.GamePlayer.Score">
             <summary>
-            linear tweening (no easingFunction)
+            The Player's score for this round
             </summary>
-            <see cref="T:Projectplace.Gui.Tweener.ease"/>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.easeOutElastic(System.Single,System.Single,System.Single,System.Single)">
+        <member name="P:Uno.Game.GamePlayer.Finished">
             <summary>
-            Elastic tweening on out - will overshoot slightly then come back,
+            Is the player finished?
             </summary>
-            <param name="t"></param>
-            <param name="b"></param>
-            <param name="d"></param>
-            <param name="c"></param>
-            <returns></returns>
         </member>
-        <member name="T:Projectplace.Gui.Tweener.onCompleteFunction">
+        <member name="P:Uno.Game.GamePlayer.NumberOfCardsPickedUp">
             <summary>
-            It's possible to register functions on the tweener instance to be called when the animation is completed
+            The number of cards the player has picked up throught the game
             </summary>
         </member>
-        <member name="T:Projectplace.Gui.Tweener.ease">
+        <member name="P:Uno.Game.GamePlayer.NumberOfCardsPlayed">
             <summary>
-            
+            The number of cards the player has played throught the game
             </summary>
-            <param name="t">Current time (in timer ticks)</param>
-            <param name="b">Starting value</param>
-            <param name="d">Duration (in timer ticks)</param>
-            <param name="c">Delta value</param>
-            <returns></returns>
         </member>
-        <member name="T:Projectplace.Gui.Tweener.PropertyProxy">
+        <member name="P:Uno.Game.GamePlayer.NumberOfTurns">
             <summary>
-            Some properties are not available for updating directly on the object we're animating.
-            For those occations we "fake" properties by using a PropertyProxy.
+            The number of chances the player has had to play
             </summary>
-            <see cref="T:Projectplace.Gui.Tweener.LocationProxy"/>
         </member>
-        <member name="M:Projectplace.Gui.Tweener.PropertyProxy.Equals(System.Object)">
+        <member name="P:Uno.Game.GamePlayer.FinishRank">
             <summary>
-            The proxy objects pretends to be the proxied control when participating in dictionaries and such.
+            The rank of the player in finishing, where 0 is first, 1 is second, and -1 is not finished yet.
             </summary>
-            <param name="obj"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Projectplace.Gui.Tweener.PropertyProxy.GetHashCode">
-            <see cref="M:Projectplace.Gui.Tweener.PropertyProxy.Equals(System.Object)"/>
         </member>
-        <member name="T:Projectplace.Gui.Tweener.LocationProxy">
+        <member name="M:Uno.Game.GamePlayer.#ctor(Uno.Player)">
             <summary>
-            Location.X and Location.Y are not directly updateable on .Net controls.
+            Create a new GamePlayer object
             </summary>
+            <param name="inputPlayer"></param>
         </member>
-        <member name="T:Projectplace.Gui.Tweener.TweenData">
+        <member name="T:Uno.GameController.CardPlayStatus">
             <summary>
-            Reflection is used to read and set properties on the animated objects.
+            Determine the status of playing a card
             </summary>
         </member>
-        <member name="M:Uno.Player.#ctor">
+        <member name="F:Uno.GameController.CardPlayStatus.Success">
             <summary>
-            Create a new Player
+            The card may be played
             </summary>
         </member>
-        <member name="M:Uno.Player.#ctor(System.String)">
+        <member name="F:Uno.GameController.CardPlayStatus.WrongColor">
             <summary>
-            Create a new Player with a name
+            The card is the wrong color
             </summary>
-            <param name="newName"></param>
         </member>
-        <member name="M:Uno.Player.#ctor(System.String,Uno.Player.PlayerType)">
+        <member name="F:Uno.GameController.CardPlayStatus.IncorrectPlayer">
             <summary>
-            Create a new player with a name and type
+            The card does not belong to the current player
             </summary>
-            <param name="newName"></param>
-            <param name="newType"></param>
         </member>
-        <member name="M:Uno.Player.PlayerTypeToString(Uno.Player.PlayerType)">
+        <member name="F:Uno.GameController.CardPlayStatus.DiscardPile">
             <summary>
-            Get a string that can be displayed from a PlayerType
+            The card is actually in the discard pile
             </summary>
-            <param name="type"></param>
-            <returns></returns>
         </member>
-        <member name="M:Uno.Player.PlayerTypeBadge(Uno.Player.PlayerType)">
+        <member name="F:Uno.GameController.CardPlayStatus.Cancelled">
             <summary>
-            Get the badge image for a player type
+            The card was cancelled
             </summary>
-            <param name="type"></param>
-            <returns></returns>
         </member>
-        <member name="P:Uno.Player.Name">
+        <member name="F:Uno.GameController.CardPlayStatus.Draw4NotAllowed">
             <summary>
-            The Player's name
+            Draw 4 may only be played when no other card of current colour are available
             </summary>
         </member>
-        <member name="P:Uno.Player.Score">
+        <member name="F:Uno.GameController.CardPlayStatus.ComputerPlayer">
             <summary>
-            The Player's total score
+            The current player can only be controlled by the computer
             </summary>
         </member>
-        <member name="P:Uno.Player.Type">
+        <member name="F:Uno.GameController.CardPlayStatus.UnkownError">
             <summary>
-             The type of the player
+            The reason is unknown: an error may have occurred
             </summary>
         </member>
-        <member name="P:Uno.Player.Rank">
+        <member name="P:Uno.GameController.Game">
             <summary>
-            The rank of the player. Will be calculated at the end of each game, when the list is sorted
+            The game being played
             </summary>
         </member>
         <member name="M:Uno.GameController.#ctor(Uno.Game)">
@@ -1033,55 +606,159 @@
             <param name="hand"></param>
             <returns></returns>
         </member>
-        <member name="P:Uno.GameController.Game">
+        <member name="M:Uno.GameOptions.ScoringSystemToString(Uno.GameOptions.ScoringSystems)">
             <summary>
-            The game being played
+            Get a string to display a scoring system value
+            </summary>
+            <param name="system"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Uno.GameOptionsView.Options">
+            <summary>
+            Selected game options
             </summary>
         </member>
-        <member name="T:Uno.GameController.CardPlayStatus">
+        <member name="F:Uno.GameOptionsView.components">
             <summary>
-            Determine the status of playing a card
+            Required designer variable.
             </summary>
         </member>
-        <member name="F:Uno.GameController.CardPlayStatus.Success">
+        <member name="M:Uno.GameOptionsView.Dispose(System.Boolean)">
             <summary>
-            The card may be played
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Uno.GameOptionsView.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="F:Uno.GameController.CardPlayStatus.WrongColor">
+        <member name="M:Uno.GameView.ReDraw">
             <summary>
-            The card is the wrong color
+            Updates the game view form to present the current state of the game
             </summary>
         </member>
-        <member name="F:Uno.GameController.CardPlayStatus.IncorrectPlayer">
+        <member name="M:Uno.GameView.AnimateMotion(System.Windows.Forms.Control,System.Int32,System.Int32,Projectplace.Gui.Tweener.ease,System.Int32)">
             <summary>
-            The card does not belong to the current player
+            Animate the movement of a control. Does not check if animation is enabled or not
+            </summary>
+            <param name="control"></param>
+            <param name="left"></param>
+            <param name="top"></param>
+            <param name="easingFunction"></param>
+            <param name="time"></param>
+        </member>
+        <member name="M:Uno.GameView.moveControlTo(System.Windows.Forms.Control,System.Int32,System.Int32,Projectplace.Gui.Tweener.ease,System.Boolean,System.Int32)">
+            <summary>
+            Animate moving a control to a new position
+            </summary>
+            <param name="card"></param>
+            <param name="left"></param>
+            <param name="top"></param>
+            <param name="easingFunction"></param>
+            <param name="useAnimation"></param>
+            <param name="time"></param>
+        </member>
+        <member name="F:Uno.GameView.components">
+            <summary>
+            Required designer variable.
             </summary>
         </member>
-        <member name="F:Uno.GameController.CardPlayStatus.DiscardPile">
+        <member name="M:Uno.GameView.Dispose(System.Boolean)">
             <summary>
-            The card is actually in the discard pile
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Uno.GameView.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="F:Uno.GameController.CardPlayStatus.Cancelled">
+        <member name="M:Uno.Help.SelectPage(Uno.Help.HelpPage)">
             <summary>
-            The card was cancelled
+            Select a page to view
+            </summary>
+            <param name="page"></param>
+        </member>
+        <member name="M:Uno.Help.setFocusEventHandler(System.Object,System.EventArgs)">
+            <summary>
+            Handle any events which may require the tab to need focus
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:Uno.Help.components">
+            <summary>
+            Required designer variable.
             </summary>
         </member>
-        <member name="F:Uno.GameController.CardPlayStatus.Draw4NotAllowed">
+        <member name="M:Uno.Help.Dispose(System.Boolean)">
             <summary>
-            Draw 4 may only be played when no other card of current colour are available
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Uno.Help.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="F:Uno.GameController.CardPlayStatus.ComputerPlayer">
+        <member name="P:Uno.Player.Name">
             <summary>
-            The current player can only be controlled by the computer
+            The Player's name
             </summary>
         </member>
-        <member name="F:Uno.GameController.CardPlayStatus.UnkownError">
+        <member name="P:Uno.Player.Score">
             <summary>
-            The reason is unknown: an error may have occurred
+            The Player's total score
             </summary>
+        </member>
+        <member name="P:Uno.Player.Type">
+            <summary>
+             The type of the player
+            </summary>
+        </member>
+        <member name="P:Uno.Player.Rank">
+            <summary>
+            The rank of the player. Will be calculated at the end of each game, when the list is sorted
+            </summary>
+        </member>
+        <member name="M:Uno.Player.#ctor">
+            <summary>
+            Create a new Player
+            </summary>
+        </member>
+        <member name="M:Uno.Player.#ctor(System.String)">
+            <summary>
+            Create a new Player with a name
+            </summary>
+            <param name="newName"></param>
+        </member>
+        <member name="M:Uno.Player.#ctor(System.String,Uno.Player.PlayerType)">
+            <summary>
+            Create a new player with a name and type
+            </summary>
+            <param name="newName"></param>
+            <param name="newType"></param>
+        </member>
+        <member name="M:Uno.Player.PlayerTypeToString(Uno.Player.PlayerType)">
+            <summary>
+            Get a string that can be displayed from a PlayerType
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Player.PlayerTypeBadge(Uno.Player.PlayerType)">
+            <summary>
+            Get the badge image for a player type
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
         </member>
         <member name="M:Uno.Program.Main">
             <summary>
@@ -1117,6 +794,734 @@
             Show the help form for a given page
             </summary>
             <param name="page"></param>
+        </member>
+        <member name="T:Uno.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.b_ccw">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.b_cw">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.b0">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.b1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.b2">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.b3">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.b4">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.b5">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.b6">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.b7">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.b8">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.b9">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.back">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.bd2">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.br">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.bs">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.bsa">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.CardTable">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.CardTableLight">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.computer">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.computerSmart">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.g_ccw">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.g_cw">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.g0">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.g1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.g2">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.g3">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.g4">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.g5">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.g6">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.g7">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.g8">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.g9">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.GameView">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.gd2">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.gr">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.gs">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.gsa">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.Help_GameOptions">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.Help_NewGame">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.Help_PlayGame">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.Help_UnoRules">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.highlight">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.Icon">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.Icon1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.r_ccw">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.r_cw">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.r0">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.r1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.r2">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.r3">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.r4">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.r5">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.r6">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.r7">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.r8">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.r9">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.rd2">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.rr">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.rs">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.rsa">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.StartupWindow">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.w">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.wd4">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.y_ccw">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.y_cw">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.y0">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.y1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.y2">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.y3">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.y4">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.y5">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.y6">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.y7">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.y8">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.y9">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.yd2">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.yr">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.ys">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.ysa">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="M:Uno.SortedPlayersView.sortPlayersByScore">
+            <summary>
+            Sort the players
+            </summary>
+        </member>
+        <member name="F:Uno.SortedPlayersView.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Uno.SortedPlayersView.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Uno.SortedPlayersView.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Uno.SortedPlayerView.SetMoreDetail(System.Boolean)">
+            <summary>
+            Show or hide the extra detail
+            </summary>
+            <param name="detail"></param>
+        </member>
+        <member name="F:Uno.SortedPlayerView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Uno.SortedPlayerView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Uno.SortedPlayerView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Uno.StartupDisplay">
+            <summary>
+            The first form shown
+            </summary>
+        </member>
+        <member name="M:Uno.StartupDisplay.StartupDisplay_FormClosed(System.Object,System.Windows.Forms.FormClosedEventArgs)">
+            <summary>
+            Handle the form closed event
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Uno.StartupDisplay.helpButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Show the help form with the new game page
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:Uno.StartupDisplay.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Uno.StartupDisplay.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Uno.StartupDisplay.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Uno.StartupPlayerView.Player">
+            <summary>
+             The player object 
+            </summary>
+        </member>
+        <member name="M:Uno.StartupPlayerView.SetPlayerName(System.String)">
+            <summary>
+            Set the name of the player
+            </summary>
+            <param name="input"></param>
+        </member>
+        <member name="F:Uno.StartupPlayerView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Uno.StartupPlayerView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Uno.StartupPlayerView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Uno.WildColorChooser.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Uno.WildColorChooser.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Uno.WildColorChooser.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Projectplace.Gui.TweenPairs">
+            <summary>
+            Utility class for convenient listing of property=>destination_value "pairs"
+            <example>new TweenPairs() {{"X", 200}, {"Opacity", 0.2}}</example>
+            </summary>
+        </member>
+        <member name="M:Projectplace.Gui.TweenPairs.Add(System.String,System.Single)">
+            <summary>
+            Add a tweener, and start playing
+            </summary>
+            <param name="s"></param>
+            <param name="f"></param>
+        </member>
+        <member name="T:Projectplace.Gui.Tweener">
+            <summary>
+             Statically this class is responsible for managing the life cycle of all registered tweener insances.
+             Instances of the Tweener class are responsible for animating given properties for a given object.
+            </summary>
+        </member>
+        <member name="T:Projectplace.Gui.Tweener.onCompleteFunction">
+            <summary>
+            It's possible to register functions on the tweener instance to be called when the animation is completed
+            </summary>
+        </member>
+        <member name="T:Projectplace.Gui.Tweener.ease">
+            <summary>
+            
+            </summary>
+            <param name="t">Current time (in timer ticks)</param>
+            <param name="b">Starting value</param>
+            <param name="d">Duration (in timer ticks)</param>
+            <param name="c">Delta value</param>
+            <returns></returns>
+        </member>
+        <member name="T:Projectplace.Gui.Tweener.PropertyProxy">
+            <summary>
+            Some properties are not available for updating directly on the object we're animating.
+            For those occations we "fake" properties by using a PropertyProxy.
+            </summary>
+            <see cref="T:Projectplace.Gui.Tweener.LocationProxy"/>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.PropertyProxy.Equals(System.Object)">
+            <summary>
+            The proxy objects pretends to be the proxied control when participating in dictionaries and such.
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.PropertyProxy.GetHashCode">
+            <see cref="M:Projectplace.Gui.Tweener.PropertyProxy.Equals(System.Object)"/>
+        </member>
+        <member name="T:Projectplace.Gui.Tweener.LocationProxy">
+            <summary>
+            Location.X and Location.Y are not directly updateable on .Net controls.
+            </summary>
+        </member>
+        <member name="T:Projectplace.Gui.Tweener.TweenData">
+            <summary>
+            Reflection is used to read and set properties on the animated objects.
+            </summary>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.#ctor(System.Object,Projectplace.Gui.TweenPairs,Projectplace.Gui.Tweener.ease,System.Int32,System.Int32)">
+            <summary>
+            Instances of the Tweener class are responsible for animating given properties for a given object.
+            </summary>
+            <param name="animated_object">The object to animate</param>
+            <param name="transistions">A list of propertynames and their destination values.</param>
+            <param name="easingFunction">The easing funtion to use for the animation.<see cref="T:Projectplace.Gui.Tweener.ease"/></param>
+            <param name="duration">The duration (in timer ticks) the animation should take to complete.</param>
+            <param name="delay">How long to wait (in timer ticks) before starting the animation.</param>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.#ctor(System.Object,Projectplace.Gui.TweenPairs,Projectplace.Gui.Tweener.ease,System.Int32,System.Int32,Projectplace.Gui.Tweener)">
+            <summary>
+            Create a new tweener
+            </summary>
+            <param name="animated_object"></param>
+            <param name="transitions"></param>
+            <param name="easingFunction"></param>
+            <param name="duration"></param>
+            <param name="delay"></param>
+            <param name="chainedTweener"></param>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.setOnComplete(Projectplace.Gui.Tweener.onCompleteFunction)">
+            <summary>
+            Set a function to execute when the tweener is completed
+            </summary>
+            <param name="f"></param>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.add(Projectplace.Gui.Tweener)">
+            <summary>
+            Register a tweener that this class should manage.
+            </summary>
+            <param name="tweener"></param>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.timer_Tick(System.Object,System.EventArgs)">
+            <summary>
+            Each timer tick we update all active tweeners.
+            When a tweener is finished we remove it, add any chained tweener and call any onComplete function registred.
+            </summary>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.animate">
+            <summary>
+            This timer tick's fraction of the transition of the animated object takes place here.
+            </summary>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.tween(System.Single,System.Single)">
+            <summary>
+            Fetch a value from the easing formula.
+            </summary>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.easeInQuad(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            quadratic (t^2) easingFunction in - accelerating from zero velocity
+            </summary>
+            <see cref="T:Projectplace.Gui.Tweener.ease"/>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.easeOutQuad(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            quadratic (t^2) easingFunction out - deccelerating to zero velocity
+            </summary>
+            <see cref="T:Projectplace.Gui.Tweener.ease"/>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.easeInOutQuad(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            quadratic easingFunction in/out - acceleration until halfway, then deceleration
+            </summary>
+            <see cref="T:Projectplace.Gui.Tweener.ease"/>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.easeInCubic(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            cubic easingFunction in - accelerating from zero velocity
+            </summary>
+            <see cref="T:Projectplace.Gui.Tweener.ease"/>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.easeOutCubic(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            cubic easingFunction out - deccelerating to zero velocity
+            </summary>
+            <see cref="T:Projectplace.Gui.Tweener.ease"/>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.easeInOutCubic(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            cubic easingFunction in/out - acceleration until halfway, then deceleration
+            </summary>
+            <see cref="T:Projectplace.Gui.Tweener.ease"/>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.easeInQuart(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            quartic easingFunction in - accelerating from zero velocity
+            </summary>
+            <see cref="T:Projectplace.Gui.Tweener.ease"/>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.easeInExpo(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            exponential (2^t) easingFunction in - accelerating from zero velocity
+            </summary>
+            <see cref="T:Projectplace.Gui.Tweener.ease"/>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.easeOutExpo(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            exponential (2^t) easingFunction out - decelerating to zero velocity
+            </summary>
+            <see cref="T:Projectplace.Gui.Tweener.ease"/>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.easeOutBack(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            easingFunction past the destination then back - deccelerating to zero
+            </summary>
+            <see cref="T:Projectplace.Gui.Tweener.ease"/>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.linear(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            linear tweening (no easingFunction)
+            </summary>
+            <see cref="T:Projectplace.Gui.Tweener.ease"/>
+        </member>
+        <member name="M:Projectplace.Gui.Tweener.easeOutElastic(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Elastic tweening on out - will overshoot slightly then come back,
+            </summary>
+            <param name="t"></param>
+            <param name="b"></param>
+            <param name="d"></param>
+            <param name="c"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>
