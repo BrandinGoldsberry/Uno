@@ -43,6 +43,7 @@
             this.scoringMethodDropDown = new System.Windows.Forms.ComboBox();
             this.stopAfterFirst = new System.Windows.Forms.CheckBox();
             this.requiredOfficialLabel = new System.Windows.Forms.Label();
+            this.swapWith7 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.computerDelayUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardsPerPlayerUpDown)).BeginInit();
             this.SuspendLayout();
@@ -127,7 +128,7 @@
             // doneButton
             // 
             this.doneButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.doneButton.Location = new System.Drawing.Point(355, 307);
+            this.doneButton.Location = new System.Drawing.Point(355, 345);
             this.doneButton.Name = "doneButton";
             this.doneButton.Size = new System.Drawing.Size(75, 23);
             this.doneButton.TabIndex = 9;
@@ -149,7 +150,7 @@
             // helpButton
             // 
             this.helpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.helpButton.Location = new System.Drawing.Point(274, 307);
+            this.helpButton.Location = new System.Drawing.Point(274, 345);
             this.helpButton.Name = "helpButton";
             this.helpButton.Size = new System.Drawing.Size(75, 23);
             this.helpButton.TabIndex = 8;
@@ -236,12 +237,24 @@
             this.requiredOfficialLabel.Text = "Required for card value scoring";
             this.requiredOfficialLabel.Visible = false;
             // 
+            // swapWith7
+            // 
+            this.swapWith7.AutoSize = true;
+            this.swapWith7.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.swapWith7.Location = new System.Drawing.Point(90, 282);
+            this.swapWith7.Name = "swapWith7";
+            this.swapWith7.Size = new System.Drawing.Size(153, 17);
+            this.swapWith7.TabIndex = 10;
+            this.swapWith7.Text = "Swap hands with a \'7\' card";
+            this.swapWith7.UseVisualStyleBackColor = true;
+            // 
             // GameOptionsView
             // 
             this.AcceptButton = this.doneButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 342);
+            this.ClientSize = new System.Drawing.Size(442, 380);
+            this.Controls.Add(this.swapWith7);
             this.Controls.Add(this.requiredOfficialLabel);
             this.Controls.Add(this.scoringMethodDropDown);
             this.Controls.Add(this.stopAfterFirst);
@@ -287,5 +300,6 @@
         private System.Windows.Forms.ComboBox scoringMethodDropDown;
         private System.Windows.Forms.CheckBox stopAfterFirst;
         private System.Windows.Forms.Label requiredOfficialLabel;
+        private System.Windows.Forms.CheckBox swapWith7;
     }
 }
