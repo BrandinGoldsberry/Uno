@@ -32,7 +32,7 @@ namespace Uno
         /// <summary>
         /// The number of cards in a Uno deck
         /// </summary>
-        public const int MAXUNOCARDS = 116;
+        public const int MAXUNOCARDS = 124;
 
 
 

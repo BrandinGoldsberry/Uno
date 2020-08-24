@@ -57,17 +57,53 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Uno.exe" size="4973056">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Uno.exe" size="4843008">
       <assemblyIdentity name="Uno" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>DgEeLJxHrXsYLk16y8NYyfaYlhU=</dsig:DigestValue>
+        <dsig:DigestValue>88gMuJfAKe796S/sVtkfT+/GVWI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
+  <file name="Resources\bsa.png" size="6557">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Y+bpMbry/a0BX7Sqpg9hajzYmQU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\bt.png" size="6744">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ZGv+15E0hAIRVSUc8DK37hLZQQA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\gsa.png" size="7176">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>GWMVlaV4BNEcyOYiRrxME0JVZa8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\gt.png" size="7104">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>obcE2gN1BluGx89hSmsEhp+w6zg=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="Resources\Icon.ico" size="370070">
     <hash>
       <dsig:Transforms>
@@ -75,6 +111,42 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>fhsbFls7TYmFGlUFbFGxpFQ8y5I=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\rsa.png" size="7177">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>IIlP+xqHy9mdzY+fa8+MVw1JaAQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\rt.png" size="7688">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>9POO/egqlGkp9qnNM6sMv+awMd4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\ysa.png" size="6609">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>a4T37/JHUsydbpazWx3yhN4/gnU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\yt.png" size="6650">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>SFXXrfsAsd83sF7+LhBMAeBaV+c=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Uno.exe.config" size="69">
