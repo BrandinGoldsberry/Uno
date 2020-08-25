@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Resources;
 using System.Drawing;
+using System.Collections;
 
 namespace Uno
 {
@@ -104,7 +105,7 @@ namespace Uno
 
         private CardColor color;
         private CardFace face;
-
+        private Image image = null;
 
         ///////////////////////////////////////////////////////////////////////////////////////
         // Properties
@@ -127,12 +128,14 @@ namespace Uno
             get { return face; }
         }
 
-        /// <summary>
+        /// <summary> 
         /// The image used to present this card on the interface
         /// </summary>
         public Image Image
         {
-            get { return ImageForCard(color, face); }
+            //get { return ImageForCard(color, face); }
+            get { return this.image; }
+            set { this.image = value; }
         }
 
 
@@ -367,6 +370,30 @@ namespace Uno
 
             string card = StringForCard(color, face);
             return (Image)Properties.Resources.ResourceManager.GetObject(card);
+        }
+
+        public static void SetOtherCardsToBack(Hashtable playerCards, Game.GamePlayer currentPlayer, GameView gameview)
+        {
+            foreach (DictionaryEntry player in playerCards)
+            {
+                if (player.Value == currentPlayer)
+                {
+                    foreach (Card card in currentPlayer.Cards)
+                    {
+                        card.Image = ImageForCard(card.Color, card.Face);
+                        Console.WriteLine("Front of card" + card.Image);
+                    }
+                }
+                else
+                {
+                    foreach(Card card in ((Game.GamePlayer)player.Value).Cards)
+                    {
+                        card.Image = Properties.Resources.back;
+                        Console.WriteLine("Back of card" + card.Image);
+                    }
+                }
+            }
+            gameview.ReDraw();
         }
 
 

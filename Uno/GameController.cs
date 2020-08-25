@@ -66,6 +66,7 @@ namespace Uno
 
 
         private Game game;
+        private Card card;
         private GameView gameView;
 
         private int cardsToDraw = 0;
@@ -132,7 +133,9 @@ namespace Uno
             // Setup the computer player delay timer
             computerPlayerTimer.Interval = game.Options.ComputerPlayerDelay;
             computerPlayerTimer.Tick += new EventHandler(computerPlayerTimer_Tick);
-    
+
+            flipOtherCards(game.PlayersCards, game.CurrentGamePlayer, gameView);
+
             // Show the game view
             gameView.Show();
             
@@ -500,6 +503,9 @@ namespace Uno
                 return;
             }
 
+            // Set current player's cards to be visible, and everyone else's cards to be flipped over
+            flipOtherCards(game.PlayersCards, game.CurrentGamePlayer, gameView);
+
 
             // Do the actions required for the action cards
             handleActions();
@@ -509,6 +515,14 @@ namespace Uno
             setupCurrentPlayer();
 
 
+        }
+
+        /// <summary>
+        /// Set only current player's cards to be visible
+        /// </summary>
+        private void flipOtherCards(Hashtable playerCards, Game.GamePlayer currentPlayer, GameView gameview)
+        {
+            Card.SetOtherCardsToBack(playerCards, currentPlayer, gameview);
         }
 
         /// <summary>
