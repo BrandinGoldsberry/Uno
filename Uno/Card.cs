@@ -7,6 +7,7 @@ using System.Text;
 using System.Resources;
 using System.Drawing;
 using System.Collections;
+using System.Windows.Forms;
 
 namespace Uno
 {
@@ -105,7 +106,7 @@ namespace Uno
 
         private CardColor color;
         private CardFace face;
-        private Image image = null;
+        private Image image;
 
         ///////////////////////////////////////////////////////////////////////////////////////
         // Properties
@@ -134,8 +135,8 @@ namespace Uno
         public Image Image
         {
             //get { return ImageForCard(color, face); }
-            get { return this.image; }
-            set { this.image = value; }
+            get { return image; }
+            set { image = value; }
         }
 
 
@@ -381,7 +382,9 @@ namespace Uno
                     foreach (Card card in currentPlayer.Cards)
                     {
                         card.Image = ImageForCard(card.Color, card.Face);
-                        Console.WriteLine("Front of card" + card.Image);
+                        gameview.cardsViews[card] = gameview.createPictureBoxForCard(card);
+                        Application.DoEvents();
+                        gameview.Refresh();
                     }
                 }
                 else
@@ -389,11 +392,14 @@ namespace Uno
                     foreach(Card card in ((Game.GamePlayer)player.Value).Cards)
                     {
                         card.Image = Properties.Resources.back;
-                        Console.WriteLine("Back of card" + card.Image);
+                        gameview.cardsViews[card] = gameview.createPictureBoxForCard(card);
+                        Application.DoEvents();
+                        gameview.Refresh();
                     }
                 }
             }
-            gameview.ReDraw();
+            gameview.Update();
+            gameview.Refresh();
         }
 
 

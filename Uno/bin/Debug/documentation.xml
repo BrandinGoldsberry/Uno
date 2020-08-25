@@ -513,7 +513,7 @@
             <param name="initial">The index of the current player</param>
             <returns>The index of the next player</returns>
         </member>
-        <member name="M:Uno.GameController.flipOtherCards(System.Collections.Hashtable,Uno.Game.GamePlayer)">
+        <member name="M:Uno.GameController.flipOtherCards(System.Collections.Hashtable,Uno.Game.GamePlayer,Uno.GameView)">
             <summary>
             Set only current player's cards to be visible
             </summary>
