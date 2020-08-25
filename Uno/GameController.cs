@@ -127,14 +127,14 @@ namespace Uno
             // Get ready for the first player (make a move if it's a computer)
             setupCurrentPlayer();
 
+            flipOtherCards(game.PlayersCards, game.CurrentGamePlayer, gameView);
+
             // Prepare the game view
             gameView.ReDraw();
 
             // Setup the computer player delay timer
             computerPlayerTimer.Interval = game.Options.ComputerPlayerDelay;
             computerPlayerTimer.Tick += new EventHandler(computerPlayerTimer_Tick);
-
-            flipOtherCards(game.PlayersCards, game.CurrentGamePlayer, gameView);
 
             // Show the game view
             gameView.Show();
@@ -503,13 +503,11 @@ namespace Uno
                 return;
             }
 
-            // Set current player's cards to be visible, and everyone else's cards to be flipped over
-            flipOtherCards(game.PlayersCards, game.CurrentGamePlayer, gameView);
-
-
             // Do the actions required for the action cards
             handleActions();
             
+            // Set current player's cards to be visible, and everyone else's cards to be flipped over
+            flipOtherCards(game.PlayersCards, game.CurrentGamePlayer, gameView);
 
             // Get ready for the next player
             setupCurrentPlayer();
