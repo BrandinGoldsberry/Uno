@@ -503,11 +503,12 @@ namespace Uno
                 return;
             }
 
+            flipOtherCards(game.PlayersCards, game.CurrentGamePlayer, gameView);
+
             // Do the actions required for the action cards
             handleActions();
             
             // Set current player's cards to be visible, and everyone else's cards to be flipped over
-            flipOtherCards(game.PlayersCards, game.CurrentGamePlayer, gameView);
 
             // Get ready for the next player
             setupCurrentPlayer();

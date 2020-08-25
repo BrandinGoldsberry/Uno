@@ -375,6 +375,8 @@ namespace Uno
 
         public static void SetOtherCardsToBack(Hashtable playerCards, Game.GamePlayer currentPlayer, GameView gameview)
         {
+            gameview.ReDraw();
+            gameview.Refresh();
             foreach (DictionaryEntry player in playerCards)
             {
                 if (player.Value == currentPlayer)
@@ -383,8 +385,6 @@ namespace Uno
                     {
                         card.Image = ImageForCard(card.Color, card.Face);
                         gameview.cardsViews[card] = gameview.createPictureBoxForCard(card);
-                        Application.DoEvents();
-                        gameview.Refresh();
                     }
                 }
                 else
@@ -393,12 +393,10 @@ namespace Uno
                     {
                         card.Image = Properties.Resources.back;
                         gameview.cardsViews[card] = gameview.createPictureBoxForCard(card);
-                        Application.DoEvents();
-                        gameview.Refresh();
                     }
                 }
             }
-            gameview.Update();
+            gameview.ReDraw();
             gameview.Refresh();
         }
 
