@@ -66,6 +66,7 @@ namespace Uno
 
 
         private Game game;
+        private Card card;
         private GameView gameView;
 
         private int cardsToDraw = 0;
@@ -119,7 +120,10 @@ namespace Uno
             foreach (System.Collections.DictionaryEntry p in game.PlayersCards)
                 sortCards((p.Value as Game.GamePlayer).Cards);
 
+            flipOtherCards(game.PlayersCards, game.CurrentGamePlayer, gameView);
+
             // Perform the action of the first card (if applicable)
+            Console.WriteLine(Game.CurrentCard);
             performAction(Game.CurrentCard);
             handleActions();
 
@@ -132,7 +136,7 @@ namespace Uno
             // Setup the computer player delay timer
             computerPlayerTimer.Interval = game.Options.ComputerPlayerDelay;
             computerPlayerTimer.Tick += new EventHandler(computerPlayerTimer_Tick);
-    
+
             // Show the game view
             gameView.Show();
             
@@ -213,6 +217,8 @@ namespace Uno
                 // Move it to the discard pile
                 game.DiscardPile.Add(card);
                 game.CurrentGamePlayer.Cards.Remove(card);
+                gameView.ReDraw();
+                gameView.Refresh();
 
                 // Perform action on action cards
                 performAction(card);
@@ -500,15 +506,25 @@ namespace Uno
                 return;
             }
 
+            flipOtherCards(game.PlayersCards, game.CurrentGamePlayer, gameView);
 
             // Do the actions required for the action cards
             handleActions();
             
+            // Set current player's cards to be visible, and everyone else's cards to be flipped over
 
             // Get ready for the next player
             setupCurrentPlayer();
 
 
+        }
+
+        /// <summary>
+        /// Set only current player's cards to be visible
+        /// </summary>
+        private void flipOtherCards(Hashtable playerCards, Game.GamePlayer currentPlayer, GameView gameview)
+        {
+            Card.SetOtherCardsToBack(playerCards, currentPlayer, gameview);
         }
 
         /// <summary>

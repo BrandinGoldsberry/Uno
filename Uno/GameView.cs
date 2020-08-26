@@ -18,7 +18,7 @@ namespace Uno
         private GameController controller;
 
         // Stores the relationship between cards and their picture boxes on the form
-        private Hashtable cardsViews = new Hashtable(108);
+        public Hashtable cardsViews = new Hashtable(108);
 
         private List<Label> playerLabels = new List<Label>(Game.MAXPLAYERS);
         private List<PictureBox> playerComputerBadges = new List<PictureBox>(Game.MAXPLAYERS);
@@ -314,7 +314,7 @@ namespace Uno
             Tweener.add(t);
         }
 
-        private PictureBox createPictureBoxForCard(Card card)
+        public PictureBox createPictureBoxForCard(Card card)
         {
             // Create the new picture box
             PictureBox pictureBox = new PictureBox();
