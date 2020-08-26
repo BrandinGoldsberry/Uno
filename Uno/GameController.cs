@@ -524,7 +524,7 @@ namespace Uno
         /// </summary>
         private void flipOtherCards(Hashtable playerCards, Game.GamePlayer currentPlayer, GameView gameview)
         {
-            Card.SetOtherCardsToBack(playerCards, currentPlayer, gameview);
+            Card.SetOtherCardsToBack(playerCards, currentPlayer, gameview, game.Options.EnableTeams);
         }
 
         /// <summary>

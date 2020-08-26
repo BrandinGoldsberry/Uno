@@ -353,10 +353,15 @@ namespace Uno
                     new GamePlayer(gamePlayers[3])
                 };
 
-                playersCards.Add(gamePlayers[0], currentGamePlayers[2]);
-                playersCards.Add(gamePlayers[1], currentGamePlayers[3]);
-                playersCards.Add(gamePlayers[2], currentGamePlayers[0]);
-                playersCards.Add(gamePlayers[3], currentGamePlayers[1]);
+                currentGamePlayers[0].TeamMate = currentGamePlayers[2];
+                currentGamePlayers[1].TeamMate = currentGamePlayers[3];
+                currentGamePlayers[2].TeamMate = currentGamePlayers[0];
+                currentGamePlayers[3].TeamMate = currentGamePlayers[1];
+
+                playersCards.Add(gamePlayers[0], currentGamePlayers[0]);
+                playersCards.Add(gamePlayers[1], currentGamePlayers[1]);
+                playersCards.Add(gamePlayers[2], currentGamePlayers[2]);
+                playersCards.Add(gamePlayers[3], currentGamePlayers[3]);
             }
             else
             {
@@ -399,7 +404,7 @@ namespace Uno
             int finishRank = -1;
 
 
-            public GamePlayer TeamMate { get; }
+            public GamePlayer TeamMate { get; set; }
 
             /// <summary>
             /// The player represented
@@ -481,12 +486,6 @@ namespace Uno
             public GamePlayer(Player inputPlayer)
             {
                 player = inputPlayer;
-            }
-
-            public GamePlayer(Player inputPlayer, GamePlayer teamMate)
-            {
-                player = inputPlayer;
-                TeamMate = teamMate;
             }
 
             public void SwapHandsWithPlayer(GamePlayer ToSwap)
