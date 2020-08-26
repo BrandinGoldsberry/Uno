@@ -69,8 +69,10 @@ namespace Uno
         private GameView gameView;
 
         private int cardsToDraw = 0;
+        private bool drawCard = false;
         private bool skip = false;
         private bool skipAll = false;
+        private bool tnt = false;
         private int numberOfPeopleToSkip = 0;
 
         private Timer computerPlayerTimer = new Timer();
@@ -579,15 +581,40 @@ namespace Uno
                 index++;
 
 
-            // Add a card from the deck to the current player's hand
-            game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
-            game.Deck.RemoveAt(0);
+            if (tnt)
+            {
+                tnt = false;
+                // Add a card from the deck to the current player's hand
+                game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
+                game.Deck.RemoveAt(0);
+                game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
+                game.Deck.RemoveAt(0);
+                game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
+                game.Deck.RemoveAt(0);
+                game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
+                game.Deck.RemoveAt(0);
 
-            // Add to the number of cards picked up statistic
-            game.CurrentGamePlayer.NumberOfCardsPickedUp++;
+                // Add to the number of cards picked up statistic
+                game.CurrentGamePlayer.NumberOfCardsPickedUp += 4;
 
-            // Successfully picked up a card
-            return true;
+                // Successfully picked up a card
+                return true;
+
+            } else
+            {
+                // Add a card from the deck to the current player's hand
+                game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
+                game.Deck.RemoveAt(0);
+
+                // Add to the number of cards picked up statistic
+                game.CurrentGamePlayer.NumberOfCardsPickedUp++;
+
+                // Successfully picked up a card
+                return true;
+            }
+
+
+            
         }
 
 
@@ -649,6 +676,10 @@ namespace Uno
                     skipAll = true;
                     break;
 
+                case Card.CardFace.TNT:
+                    tnt = true;
+                    break;
+
                 case Card.CardFace.Reverse:
                     reverse();
                     break;
@@ -682,12 +713,18 @@ namespace Uno
                 return;
             }
 
-
             // Force the player to draw their cards
             // TODO: give the next player an opportunity to play another draw card on top, etc.
             if (cardsToDraw > 0 && game.NumberOfPlayingPlayers > 1)
             {
                 bool success;
+                drawCard = true;
+
+                if(tnt)
+                {
+                    cardsToDraw += 4;
+                    tnt = false;
+                }
 
                 for (int i = 0; i < cardsToDraw; i++)
                 {
@@ -699,6 +736,7 @@ namespace Uno
 #endif
                 }
 
+                drawCard = false;
                 // Reset to 0
                 cardsToDraw = 0;
 

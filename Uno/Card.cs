@@ -407,6 +407,26 @@ namespace Uno
                 return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\ysa.png");
                 //return Properties.Resources.ysa;
             }
+            else if (card.Equals("bt"))
+            {
+                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\bt.png");
+                //return Properties.Resources.gsa;
+            }
+            else if (card.Equals("gt"))
+            {
+                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\gt.png");
+                //return Properties.Resources.rsa;
+            }
+            else if (card.Equals("rt"))
+            {
+                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\rt.png");
+                //return Properties.Resources.ysa;
+            }
+            else if (card.Equals("yt"))
+            {
+                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\yt.png");
+                //return Properties.Resources.ysa;
+            }
             else
             {
                 return (Image)Properties.Resources.ResourceManager.GetObject(card);
