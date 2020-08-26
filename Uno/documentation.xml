@@ -891,17 +891,17 @@
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
-        <member name="P:Uno.Properties.Resources.bt">
-            <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
-            </summary>
-        </member>
         <member name="P:Uno.Properties.Resources.bs">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Uno.Properties.Resources.bsa">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.bt">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
@@ -1001,17 +1001,17 @@
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
-        <member name="P:Uno.Properties.Resources.gt">
-            <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
-            </summary>
-        </member>
         <member name="P:Uno.Properties.Resources.gs">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Uno.Properties.Resources.gsa">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.gt">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
@@ -1121,17 +1121,17 @@
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
-        <member name="P:Uno.Properties.Resources.rt">
-            <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
-            </summary>
-        </member>
         <member name="P:Uno.Properties.Resources.rs">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Uno.Properties.Resources.rsa">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.rt">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
@@ -1221,17 +1221,17 @@
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
-        <member name="P:Uno.Properties.Resources.yt">
-            <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
-            </summary>
-        </member>
         <member name="P:Uno.Properties.Resources.ys">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Uno.Properties.Resources.ysa">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.yt">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>

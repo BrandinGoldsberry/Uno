@@ -458,6 +458,7 @@
     <None Include="Resources\Help_UnoRules.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\bsa.bmp" />
     <Content Include="Resources\bsa.png" />
     <Content Include="Resources\bt.png" />
     <Content Include="Resources\gsa.png" />

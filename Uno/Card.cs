@@ -387,50 +387,7 @@ namespace Uno
             string card = StringForCard(color, face);
             Console.WriteLine(card);
 
-            if (card.Equals("bsa"))
-            {
-                //return Properties.Resources.bsa;
-                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\bsa.png");
-            }
-            else if (card.Equals("gsa"))
-            {
-                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\gsa.png");
-                //return Properties.Resources.gsa;
-            }
-            else if (card.Equals("rsa"))
-            {
-                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\rsa.png");
-                //return Properties.Resources.rsa;
-            }
-            else if (card.Equals("ysa"))
-            {
-                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\ysa.png");
-                //return Properties.Resources.ysa;
-            }
-            else if (card.Equals("bt"))
-            {
-                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\bt.png");
-                //return Properties.Resources.gsa;
-            }
-            else if (card.Equals("gt"))
-            {
-                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\gt.png");
-                //return Properties.Resources.rsa;
-            }
-            else if (card.Equals("rt"))
-            {
-                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\rt.png");
-                //return Properties.Resources.ysa;
-            }
-            else if (card.Equals("yt"))
-            {
-                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\yt.png");
-                //return Properties.Resources.ysa;
-            }
-            else
-            {
-                return (Image)Properties.Resources.ResourceManager.GetObject(card);
-            }
+            return (Image)Properties.Resources.ResourceManager.GetObject(card);
 
         }
 
