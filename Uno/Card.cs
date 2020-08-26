@@ -134,8 +134,7 @@ namespace Uno
         /// </summary>
         public Image Image
         {
-            //get { return ImageForCard(color, face); }
-            get { return image; }
+            get { return ImageForCard(color, face); }
             set { image = value; }
         }
 

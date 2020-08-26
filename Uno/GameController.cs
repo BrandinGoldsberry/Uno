@@ -120,14 +120,15 @@ namespace Uno
             foreach (System.Collections.DictionaryEntry p in game.PlayersCards)
                 sortCards((p.Value as Game.GamePlayer).Cards);
 
+            flipOtherCards(game.PlayersCards, game.CurrentGamePlayer, gameView);
+
             // Perform the action of the first card (if applicable)
+            Console.WriteLine(Game.CurrentCard);
             performAction(Game.CurrentCard);
             handleActions();
 
             // Get ready for the first player (make a move if it's a computer)
             setupCurrentPlayer();
-
-            flipOtherCards(game.PlayersCards, game.CurrentGamePlayer, gameView);
 
             // Prepare the game view
             gameView.ReDraw();
