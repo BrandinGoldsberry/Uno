@@ -33,6 +33,7 @@ namespace Uno
             BackgroundImage = Properties.Resources.StartupWindow;
 
             numberOfPlayers.Maximum = Game.MAXPLAYERS;
+            numberOfPlayers.Minimum = 2;
             numberOfPlayers.Value = 2;
 
 

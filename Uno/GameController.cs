@@ -140,17 +140,17 @@ namespace Uno
             // Show the game view
             gameView.Show();
             
-            if (game.NumberOfPlayingPlayers == 1)
-            {
-                // Show the final results
-                Program.NewSortedPlayersView(game);
+            //if (game.NumberOfPlayingPlayers == 1)
+            //{
+            //    // Show the final results
+            //    Program.NewSortedPlayersView(game);
 
-                // Setting this bool to true to end the game without dialog box
-                gameView.closeGameWithoutDialog = true;
+            //    // Setting this bool to true to end the game without dialog box
+            //    gameView.closeGameWithoutDialog = true;
 
-                // Close the game view
-                gameView.Close();
-            }
+            //    // Close the game view
+            //    gameView.Close();
+            //}
         }
 
 
