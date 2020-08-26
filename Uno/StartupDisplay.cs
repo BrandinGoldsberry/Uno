@@ -112,8 +112,16 @@ namespace Uno
         private void gameOptionsButton_Click(object sender, EventArgs e)
         {
             // Show the game options dialog, and make sure it's at the front
-            optionsView.Show();
-            optionsView.BringToFront();
+            DialogResult result = optionsView.ShowDialog();
+            if(optionsView.Options.EnableTeams)
+            {
+                numberOfPlayers.Value = 4;
+                numberOfPlayers.Enabled = false;
+            } 
+            else
+            {
+                numberOfPlayers.Enabled = true;
+            }
         }
 
 

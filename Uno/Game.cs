@@ -341,10 +341,30 @@ namespace Uno
             players = gamePlayers;
             options = gameOptions;
 
-            // Create entries for each player in the hash table
-            foreach (Player p in players)
+
+            if(gameOptions.EnableTeams)
             {
-                playersCards.Add(p, new GamePlayer(p));
+                //Player count gets set to 4 for teams
+                GamePlayer[] currentGamePlayers =
+                {
+                    new GamePlayer(gamePlayers[0]),
+                    new GamePlayer(gamePlayers[1]),
+                    new GamePlayer(gamePlayers[2]),
+                    new GamePlayer(gamePlayers[3])
+                };
+
+                playersCards.Add(gamePlayers[0], currentGamePlayers[2]);
+                playersCards.Add(gamePlayers[1], currentGamePlayers[3]);
+                playersCards.Add(gamePlayers[2], currentGamePlayers[0]);
+                playersCards.Add(gamePlayers[3], currentGamePlayers[1]);
+            }
+            else
+            {
+                // Create entries for each player in the hash table
+                foreach (Player p in players)
+                {
+                    playersCards.Add(p, new GamePlayer(p));
+                }
             }
         }
 
@@ -378,6 +398,8 @@ namespace Uno
             int turns = 0;
             int finishRank = -1;
 
+
+            public GamePlayer TeamMate { get; }
 
             /// <summary>
             /// The player represented
@@ -459,6 +481,12 @@ namespace Uno
             public GamePlayer(Player inputPlayer)
             {
                 player = inputPlayer;
+            }
+
+            public GamePlayer(Player inputPlayer, GamePlayer teamMate)
+            {
+                player = inputPlayer;
+                TeamMate = teamMate;
             }
 
             public void SwapHandsWithPlayer(GamePlayer ToSwap)
