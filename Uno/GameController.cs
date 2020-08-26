@@ -216,6 +216,8 @@ namespace Uno
                 // Move it to the discard pile
                 game.DiscardPile.Add(card);
                 game.CurrentGamePlayer.Cards.Remove(card);
+                gameView.ReDraw();
+                gameView.Refresh();
 
                 // Perform action on action cards
                 performAction(card);

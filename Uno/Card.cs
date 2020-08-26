@@ -384,7 +384,14 @@ namespace Uno
                     foreach (Card card in currentPlayer.Cards)
                     {
                         card.Image = ImageForCard(card.Color, card.Face);
-                        gameview.cardsViews[card] = gameview.createPictureBoxForCard(card);
+                        //gameview.cardsViews[card] = gameview.createPictureBoxForCard(card);
+                        foreach(DictionaryEntry cardView in gameview.cardsViews)
+                        {
+                            if(cardView.Key == card)
+                            {
+                                ((PictureBox)cardView.Value).Image = ImageForCard(card.Color, card.Face);
+                            }
+                        }
                     }
                 }
                 else
@@ -392,7 +399,14 @@ namespace Uno
                     foreach(Card card in ((Game.GamePlayer)player.Value).Cards)
                     {
                         card.Image = Properties.Resources.back;
-                        gameview.cardsViews[card] = gameview.createPictureBoxForCard(card);
+                        //gameview.cardsViews[card] = gameview.createPictureBoxForCard(card);
+                        foreach (DictionaryEntry cardView in gameview.cardsViews)
+                        {
+                            if (cardView.Key == card)
+                            {
+                                ((PictureBox)cardView.Value).Image = Properties.Resources.back;
+                            }
+                        }
                     }
                 }
             }
