@@ -41,6 +41,7 @@ C:\Users\wmonk\Documents\GitHub\Uno\Uno\bin\Release\Uno.application
 C:\Users\wmonk\Documents\GitHub\Uno\Uno\bin\Release\Uno.exe
 C:\Users\wmonk\Documents\GitHub\Uno\Uno\bin\Release\Uno.pdb
 C:\Users\wmonk\Documents\GitHub\Uno\Uno\bin\Release\documentation.xml
+C:\Users\wmonk\Documents\GitHub\Uno\Uno\obj\Release\Uno.csprojAssemblyReference.cache
 C:\Users\wmonk\Documents\GitHub\Uno\Uno\obj\Release\Uno.AboutBox.resources
 C:\Users\wmonk\Documents\GitHub\Uno\Uno\obj\Release\Uno.GameOptionsView.resources
 C:\Users\wmonk\Documents\GitHub\Uno\Uno\obj\Release\Uno.GameView.resources

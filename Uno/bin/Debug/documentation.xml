@@ -65,11 +65,6 @@
             A draw 2 card
             </summary>
         </member>
-        <member name="F:Uno.Card.CardFace.TNT">
-            <summary>
-            A TNT card that when played, the next person to draw a card get 4 cards
-            </summary>
-        </member>
         <member name="F:Uno.Card.CardFace.Skip">
             <summary>
             A skip card
@@ -901,11 +896,6 @@
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
-        <member name="P:Uno.Properties.Resources.bt">
-            <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
-            </summary>
-        </member>
         <member name="P:Uno.Properties.Resources.CardTable">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
@@ -1007,11 +997,6 @@
             </summary>
         </member>
         <member name="P:Uno.Properties.Resources.gsa">
-            <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
-            </summary>
-        </member>
-        <member name="P:Uno.Properties.Resources.gt">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
@@ -1131,11 +1116,6 @@
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
-        <member name="P:Uno.Properties.Resources.rt">
-            <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
-            </summary>
-        </member>
         <member name="P:Uno.Properties.Resources.StartupWindow">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
@@ -1227,11 +1207,6 @@
             </summary>
         </member>
         <member name="P:Uno.Properties.Resources.ysa">
-            <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
-            </summary>
-        </member>
-        <member name="P:Uno.Properties.Resources.yt">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
