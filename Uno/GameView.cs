@@ -18,7 +18,7 @@ namespace Uno
         private GameController controller;
 
         // Stores the relationship between cards and their picture boxes on the form
-        public Hashtable cardsViews = new Hashtable(108);
+        private Hashtable cardsViews = new Hashtable(124);
 
         private List<Label> playerLabels = new List<Label>(Game.MAXPLAYERS);
         private List<PictureBox> playerComputerBadges = new List<PictureBox>(Game.MAXPLAYERS);
@@ -54,7 +54,7 @@ namespace Uno
             game = newGame;
             controller = gameController;
 
-            
+
 
 
             // Create picture boxes for each card, and store them in a hash table
@@ -109,9 +109,9 @@ namespace Uno
 
 
 
-            #if DEBUG
+#if DEBUG
                 debugControls.Visible = true;
-            #endif
+#endif
         }
 
         void GameView_FormClosing(object sender, FormClosingEventArgs e)
@@ -119,7 +119,8 @@ namespace Uno
             if (closeGameWithoutDialog)
             {
                 confirmedClose = true;
-            } else if (!confirmedClose)
+            }
+            else if (!confirmedClose)
             {
                 DialogResult result = MessageBox.Show(this, "Are you sure you want to close this Uno game?", "Close Uno Game", MessageBoxButtons.OKCancel);
 
@@ -130,14 +131,14 @@ namespace Uno
             }
         }
 
-        
+
 
         /*
          * Using Background images without reducing performance
          * http://blogs.msdn.com/mhendersblog/archive/2005/10/12/480156.aspx
          * and http://www.eggheadcafe.com/software/aspnet/30750705/help-with-form-painting-p.aspx
          */
-        
+
         private Bitmap renderBmp;
 
         public override Image BackgroundImage
@@ -157,7 +158,7 @@ namespace Uno
                 return renderBmp;
             }
         }
-        
+
 
 
         /// <summary>
@@ -318,10 +319,10 @@ namespace Uno
         {
             // Create the new picture box
             PictureBox pictureBox = new PictureBox();
-            
+
             // Set the tag so its card can be easily retrieved
             pictureBox.Tag = card;
-            
+
             // Set some properties
             pictureBox.Image = card.Image;
             pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -479,7 +480,7 @@ namespace Uno
         {
             // First, check if it's ok to end the game
             if (!endGame("End Game", "Are you sure you want to end this game?")) return;
-            
+
             // Tell the controller to end the game
             controller.EndGame();
         }
@@ -491,7 +492,7 @@ namespace Uno
         }
 
 
-        
+
         void endGameHighlightTimer_Tick(object sender, EventArgs e)
         {
             // Alterate the visibility property of the end highlighter on each timer tick
