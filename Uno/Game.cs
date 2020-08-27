@@ -344,6 +344,11 @@ namespace Uno
 
             if(gameOptions.EnableTeams)
             {
+                gamePlayers[0].Team = 1;
+                gamePlayers[0].Team = 1;
+                gamePlayers[1].Team = 2;
+                gamePlayers[1].Team = 2;
+
                 //Player count gets set to 4 for teams
                 GamePlayer[] currentGamePlayers =
                 {

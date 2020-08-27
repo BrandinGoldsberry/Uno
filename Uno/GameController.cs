@@ -230,7 +230,7 @@ namespace Uno
                 if (game.CurrentGamePlayer.Finished)
                     game.CurrentGamePlayer.FinishRank = game.NumberOfFinishedPlayers - 1;
 
-                if (game.NumberOfPlayingPlayers == 1)
+                if (!game.Options.EnableTeams && game.NumberOfPlayingPlayers == 1)
                 {
                     // Show the final results
                     Program.NewSortedPlayersView(game);
@@ -240,11 +240,24 @@ namespace Uno
 
                     // Close the game view
                     gameView.Close();
+                    return status;
+                }
+                else if(game.Options.EnableTeams && game.NumberOfFinishedPlayers > 0)
+                {
+                    Program.NewSortedPlayersView(game);
+
+                    gameView.closeGameWithoutDialog = true;
+
+                    gameView.Close();
+                    return status;
+                }
+                else
+                {
+                    // Setup next player, and update the game view
+                    nextPlayer();
+                    gameView.ReDraw();
                 }
 
-                // Setup next player, and update the game view
-                nextPlayer();
-                gameView.ReDraw();
             }
 
             return status;
@@ -724,14 +737,8 @@ namespace Uno
         /// </summary>
         private void startComputerMove()
         {
-
-            if (game.NumberOfPlayingPlayers == 1)
-            {
-                // Close the game view
-                gameView.Close();
-            }
             // Check the next player actually is a computer
-            else if (game.CurrentPlayer.Type != Player.PlayerType.Human)
+            if (game.CurrentPlayer.Type != Player.PlayerType.Human)
             {
                 // Start a timer to add some delay before the computer moves
                 computerPlayerTimer.Start();
