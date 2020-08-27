@@ -4,14 +4,14 @@
   <description asmv2:publisher="Douglas Heriot" asmv2:product="Uno" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" />
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Uno.exe.manifest" size="6302">
+    <dependentAssembly dependencyType="install" codebase="Uno.exe.manifest" size="7806">
       <assemblyIdentity name="Uno.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>utIudtWJBLXZH5n0L0HwTdmSsek=</dsig:DigestValue>
+        <dsig:DigestValue>yiWOqq4/fOckr16DCDe9tRjvc7Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
