@@ -457,16 +457,6 @@
   <ItemGroup>
     <None Include="Resources\Help_UnoRules.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\bsa.png" />
-    <Content Include="Resources\bt.png" />
-    <Content Include="Resources\gsa.png" />
-    <Content Include="Resources\gt.png" />
-    <Content Include="Resources\rsa.png" />
-    <Content Include="Resources\rt.png" />
-    <Content Include="Resources\ysa.png" />
-    <Content Include="Resources\yt.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

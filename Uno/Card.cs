@@ -76,11 +76,6 @@ namespace Uno
             Draw2,
 
             /// <summary>
-            /// A TNT card that when played, the next person to draw a card get 4 cards
-            /// </summary>
-            TNT,
-
-            /// <summary>
             /// A skip card
             /// </summary>
             Skip,
@@ -341,10 +336,6 @@ namespace Uno
                     ret = "r";
                     break;
 
-                case CardFace.TNT:
-                    ret = "t";
-                    break;
-
                 case CardFace.Skip:
                     ret = "s";
                     break;
@@ -457,7 +448,6 @@ namespace Uno
                 case CardFace.SkipAll:
                     value = 20;
                     break;
-                case CardFace.TNT:
                 case CardFace.None:
                 case CardFace.Draw4:
                     value = 50;
