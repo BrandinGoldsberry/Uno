@@ -101,7 +101,7 @@
             </summary>
         </member>
         <member name="P:Uno.Card.Image">
-            <summary>
+            <summary> 
             The image used to present this card on the interface
             </summary>
         </member>
@@ -462,11 +462,11 @@
         </member>
         <member name="M:Uno.GameController.SelectCard(Uno.Card)">
             <summary>
-            Choose a card for the current player to play
+            Choose a card for the current play to play
             </summary>
             <param name="card"></param>
         </member>
-        <member name="M:Uno.GameController.SelectCard(Uno.Card,Uno.Player,System.Boolean)">
+        <member name="M:Uno.GameController.PlaySelectedCard(Uno.Card)">
             <summary>
             Choose a card for the current player to play
             </summary>
@@ -517,6 +517,11 @@
             </summary>
             <param name="initial">The index of the current player</param>
             <returns>The index of the next player</returns>
+        </member>
+        <member name="M:Uno.GameController.flipOtherCards(System.Collections.Hashtable,Uno.Game.GamePlayer,Uno.GameView)">
+            <summary>
+            Set only current player's cards to be visible
+            </summary>
         </member>
         <member name="M:Uno.GameController.setupCurrentPlayer">
             <summary>
@@ -673,6 +678,23 @@
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
         <member name="M:Uno.GameView.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Uno.HandSwapSelect.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Uno.HandSwapSelect.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Uno.HandSwapSelect.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.

@@ -315,7 +315,7 @@ namespace Uno
             Tweener.add(t);
         }
 
-        private PictureBox createPictureBoxForCard(Card card)
+        public PictureBox createPictureBoxForCard(Card card)
         {
             // Create the new picture box
             PictureBox pictureBox = new PictureBox();

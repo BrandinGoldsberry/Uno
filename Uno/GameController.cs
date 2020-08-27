@@ -32,7 +32,7 @@ namespace Uno
             /// The card does not belong to the current player
             /// </summary>
             IncorrectPlayer,
-
+            
             /// <summary>
             /// The card is actually in the discard pile
             /// </summary>
@@ -66,17 +66,14 @@ namespace Uno
 
 
         private Game game;
+        private Card card;
         private GameView gameView;
 
         private int cardsToDraw = 0;
-        private bool drawCard = false;
         private bool skip = false;
-        private bool skipAll = false;
-        private bool tnt = false;
-        private int numberOfPeopleToSkip = 0;
 
         private Timer computerPlayerTimer = new Timer();
-
+        
 
 
         ///////////////////////////////////////////////////////////////////////////////////////
@@ -111,7 +108,7 @@ namespace Uno
             // Setup the uno deck
             game.Deck = GenerateUnoDeck();
             shuffleDeck();
-
+            
             // Create a new game view
             gameView = new GameView(game, this);
             gameView.FormClosed += new FormClosedEventHandler(gameView_FormClosed);
@@ -123,7 +120,10 @@ namespace Uno
             foreach (System.Collections.DictionaryEntry p in game.PlayersCards)
                 sortCards((p.Value as Game.GamePlayer).Cards);
 
+            flipOtherCards(game.PlayersCards, game.CurrentGamePlayer, gameView);
+
             // Perform the action of the first card (if applicable)
+            Console.WriteLine(Game.CurrentCard);
             performAction(Game.CurrentCard);
             handleActions();
 
@@ -139,7 +139,7 @@ namespace Uno
 
             // Show the game view
             gameView.Show();
-
+            
             if (game.NumberOfPlayingPlayers == 1)
             {
                 // Show the final results
@@ -162,7 +162,7 @@ namespace Uno
 
 
         /// <summary>
-        /// Choose a card for the current player to play
+        /// Choose a card for the current play to play
         /// </summary>
         /// <param name="card"></param>
         public CardPlayStatus SelectCard(Card card)
@@ -170,13 +170,13 @@ namespace Uno
             // Don't let humans play on behalf of the computer!
             if (game.CurrentPlayer.Type != Player.PlayerType.Human)
                 return CardPlayStatus.ComputerPlayer;
-
-
+                
+            
             // Check if the card can be played before asking for wild colour
             CardPlayStatus wildCheckStatus = CanPlayCardStatus(card);
             if (wildCheckStatus != CardPlayStatus.Success)
                 return wildCheckStatus;
-
+            
             // Ask for the color for a wild card
             if (card.Color == Card.CardColor.Wild)
             {
@@ -199,14 +199,14 @@ namespace Uno
             }
 
             // Play the card, with the selected wild color already set if necessary
-            return SelectCard(card, game.CurrentPlayer, false);
+            return PlaySelectedCard(card);
         }
 
 
         /// <summary>
         /// Choose a card for the current player to play
         /// </summary>
-        public CardPlayStatus SelectCard(Card card, Player player, bool computer)
+        public CardPlayStatus PlaySelectedCard(Card card)
         {
             // Check if the card  is allowed to be played
             CardPlayStatus status = CanPlayCardStatus(card);
@@ -217,10 +217,12 @@ namespace Uno
                 // Move it to the discard pile
                 game.DiscardPile.Add(card);
                 game.CurrentGamePlayer.Cards.Remove(card);
+                gameView.ReDraw();
+                gameView.Refresh();
 
                 // Perform action on action cards
                 performAction(card);
-
+                
                 // Add to number of cards played statistic
                 game.CurrentGamePlayer.NumberOfCardsPlayed++;
 
@@ -246,7 +248,7 @@ namespace Uno
             }
 
             return status;
-
+            
         }
 
 
@@ -372,7 +374,7 @@ namespace Uno
                     success = CardPlayStatus.IncorrectPlayer;
             }
 
-
+            
             return success;
         }
 
@@ -406,13 +408,13 @@ namespace Uno
         }
 
 
-
+        
         /// <summary>
         /// Deal cards to each player and to the discard pile
         /// </summary>
         private void dealCards()
         {
-
+                       
             // Continue until the last player has the required number of cards
             while ((game.PlayersCards[game.Players.Last()] as Game.GamePlayer).Cards.Count < game.Options.CardsForEachPlayer)
             {
@@ -423,7 +425,7 @@ namespace Uno
                     (p.Value as Game.GamePlayer).Cards.Add(game.Deck[0]);
 
                     // Remove from deck
-                    game.Deck.RemoveAt(0);
+                    game.Deck.RemoveAt(0);   
                 }
             }
 
@@ -435,7 +437,7 @@ namespace Uno
                 game.Deck.RemoveAt(0);
             }
             while (game.CurrentCard.Color == Card.CardColor.Wild);
-
+            
         }
 
 
@@ -489,55 +491,40 @@ namespace Uno
 
         private void nextPlayer()
         {
+            // Stop if the game is all finished
+            if (game.Finished)
+                return;
 
-            if (skipAll)
+
+            // Move onto the next player
+            game.CurrentPlayerIndex = getNextPlayerIndex(game.CurrentPlayerIndex);
+
+            // Check if the player is actually already finished (but the whole game isn't)
+            if (game.CurrentGamePlayer.Finished)
             {
-                skipAll = false;
-                // Stop if the game is all finished
-                if (game.Finished)
-                    return;
-
-                // Check if the player is actually already finished (but the whole game isn't)
-                if (game.CurrentGamePlayer.Finished)
-                {
-                    nextPlayer();
-                    return;
-                }
-
-
-                // Do the actions required for the action cards
-                handleActions();
-
-
-                // Get ready for the next player
-                setupCurrentPlayer();
-            }
-            else
-            {
-                // Stop if the game is all finished
-                if (game.Finished)
-                    return;
-
-
-                // Move onto the next player
-                game.CurrentPlayerIndex = getNextPlayerIndex(game.CurrentPlayerIndex);
-
-                // Check if the player is actually already finished (but the whole game isn't)
-                if (game.CurrentGamePlayer.Finished)
-                {
-                    nextPlayer();
-                    return;
-                }
-
-
-                // Do the actions required for the action cards
-                handleActions();
-
-
-                // Get ready for the next player
-                setupCurrentPlayer();
+                nextPlayer();
+                return;
             }
 
+            flipOtherCards(game.PlayersCards, game.CurrentGamePlayer, gameView);
+
+            // Do the actions required for the action cards
+            handleActions();
+            
+            // Set current player's cards to be visible, and everyone else's cards to be flipped over
+
+            // Get ready for the next player
+            setupCurrentPlayer();
+
+
+        }
+
+        /// <summary>
+        /// Set only current player's cards to be visible
+        /// </summary>
+        private void flipOtherCards(Hashtable playerCards, Game.GamePlayer currentPlayer, GameView gameview)
+        {
+            Card.SetOtherCardsToBack(playerCards, currentPlayer, gameview);
         }
 
         /// <summary>
@@ -582,41 +569,15 @@ namespace Uno
                 index++;
 
 
-            if (tnt)
-            {
-                tnt = false;
-                // Add a card from the deck to the current player's hand
-                game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
-                game.Deck.RemoveAt(0);
-                game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
-                game.Deck.RemoveAt(0);
-                game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
-                game.Deck.RemoveAt(0);
-                game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
-                game.Deck.RemoveAt(0);
+            // Add a card from the deck to the current player's hand
+            game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
+            game.Deck.RemoveAt(0);
 
-                // Add to the number of cards picked up statistic
-                game.CurrentGamePlayer.NumberOfCardsPickedUp += 4;
+            // Add to the number of cards picked up statistic
+            game.CurrentGamePlayer.NumberOfCardsPickedUp++;
 
-                // Successfully picked up a card
-                return true;
-
-            }
-            else
-            {
-                // Add a card from the deck to the current player's hand
-                game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
-                game.Deck.RemoveAt(0);
-
-                // Add to the number of cards picked up statistic
-                game.CurrentGamePlayer.NumberOfCardsPickedUp++;
-
-                // Successfully picked up a card
-                return true;
-            }
-
-
-
+            // Successfully picked up a card
+            return true;
         }
 
 
@@ -630,7 +591,7 @@ namespace Uno
 #endif
 
             // Don't allow when the discard pile is already very empty
-            if (Game.DiscardPile.Count < 2)
+            if(Game.DiscardPile.Count < 2)
                 // Report failure
                 return false;
 
@@ -674,21 +635,18 @@ namespace Uno
                     skip = true;
                     break;
 
-                case Card.CardFace.SkipAll:
-                    skipAll = true;
-                    break;
-
-                case Card.CardFace.TNT:
-                    tnt = true;
-                    break;
-
                 case Card.CardFace.Reverse:
                     reverse();
                     break;
 
                 case Card.CardFace.Zero:
-                    if (game.Options.SwapHandsWith0)
+                    if(game.Options.SwapHandsWith0)
                         swapAllPlayerHands();
+                    break;
+
+                case Card.CardFace.Seven:
+                    if (game.Options.SwapHandsWith7)
+                        SwapHandsOnSeven();
                     break;
             }
         }
@@ -708,25 +666,12 @@ namespace Uno
                 return;
             }
 
-            // Skip every player if a skipAll card was played
-            if (skipAll)
-            {
-                skipAll = false;
-                return;
-            }
 
             // Force the player to draw their cards
             // TODO: give the next player an opportunity to play another draw card on top, etc.
             if (cardsToDraw > 0 && game.NumberOfPlayingPlayers > 1)
             {
                 bool success;
-                drawCard = true;
-
-                if (tnt)
-                {
-                    cardsToDraw += 4;
-                    tnt = false;
-                }
 
                 for (int i = 0; i < cardsToDraw; i++)
                 {
@@ -738,7 +683,6 @@ namespace Uno
 #endif
                 }
 
-                drawCard = false;
                 // Reset to 0
                 cardsToDraw = 0;
 
@@ -812,7 +756,7 @@ namespace Uno
 
             // Set a flag to check if it should be smart (easier than referencing the type all the time)
             bool smart = game.CurrentPlayer.Type == Player.PlayerType.SmartComputer;
-
+            
             // Make cards easier to access
             List<Card> cards = game.CurrentGamePlayer.Cards;
 
@@ -825,7 +769,7 @@ namespace Uno
             if (smart)
             {
                 // Look for cards the same color
-                foreach (Card c in cards)
+                foreach(Card c in cards)
                 {
                     if (CanPlayCard(c) && game.CurrentColor == c.Color)
                         playableCards.Add(c);
@@ -894,13 +838,13 @@ namespace Uno
                         // Reset the color counts
                         for (int i = 0; i < Card.NUMBEROFCOLORS - 1; i++)
                         {
-                            colorCounts.Add((Card.CardColor)i, 0);
+                            colorCounts.Add((Card.CardColor)i,0);
                         }
 
                         // Add 1 to the count of the color for each card
                         foreach (Card c in cards)
                         {
-                            if (c.Color != Card.CardColor.Wild)
+                            if(c.Color != Card.CardColor.Wild)
                                 colorCounts[c.Color]++;
                         }
 
@@ -908,14 +852,14 @@ namespace Uno
                         greatestColor = (Card.CardColor)0;
 
                         // Look for the greatest color
-                        for (int i = 1; i < (Card.NUMBEROFCOLORS - 1); i++)
+                        for (int i = 1; i < (Card.NUMBEROFCOLORS-1); i++)
                         {
                             if (colorCounts[greatestColor] < colorCounts[(Card.CardColor)i])
                                 greatestColor = (Card.CardColor)i;
                         }
 
                         // If more than one color has the highest number of cards, choose it
-                        for (int i = 0; i < (Card.NUMBEROFCOLORS - 1); i++)
+                        for (int i = 0; i < (Card.NUMBEROFCOLORS -1); i++)
                         {
                             if (colorCounts[(Card.CardColor)i] == colorCounts[greatestColor])
                                 colorsToChoose.Add((Card.CardColor)i);
@@ -934,14 +878,14 @@ namespace Uno
                 }
 
                 // Play the card
-                SelectCard(selectedCard, game.CurrentPlayer, true);
+                PlaySelectedCard(selectedCard);
             }
             else
             {
                 // Pickup a card if there's nothing else to play
                 PickupCard(true);
             }
-
+        
         }
 
 
@@ -972,16 +916,68 @@ namespace Uno
 
             for (int i = 0; i < game.NumberOfPlayingPlayers; i++)
             {
-                if (i < game.NumberOfPlayingPlayers - 1)
+                if(i<game.NumberOfPlayingPlayers-1)
                     (game.PlayersCards[game.Players[index]] as Game.GamePlayer).Cards = (game.PlayersCards[game.Players[getNextPlayingPlayerIndex(index, true)]] as Game.GamePlayer).Cards;
                 else
                     (game.PlayersCards[game.Players[index]] as Game.GamePlayer).Cards = temp;
 
-
+                
                 index = getNextPlayingPlayerIndex(index, true);
             }
         }
 
+        private void PlayerSwapHands(int? PlayerIndex)
+        {
+            int Player = PlayerIndex ?? default;
+            Game.GamePlayer TargetPlayer = game.PlayersCards[game.Players[Player]] as Game.GamePlayer;
+            Game.GamePlayer CurrentPlayer = game.PlayersCards[game.Players[game.CurrentPlayerIndex]] as Game.GamePlayer;
+
+            List<Card> targetPlayerCards = TargetPlayer.Cards;
+            List<Card> currentPlayerCards = CurrentPlayer.Cards;
+
+            TargetPlayer.Cards = currentPlayerCards;
+            CurrentPlayer.Cards = targetPlayerCards;
+            nextPlayer();
+            gameView.ReDraw();
+        }
+
+        public void SwapHandsOnSeven()
+        {
+            if(game.CurrentPlayer.Type == Player.PlayerType.Computer)
+            {
+                int smallestHand = int.MaxValue;
+                int handOwner = -1;
+                for(int i = 0; i < game.PlayersCards.Count; i++)
+                {
+                    Game.GamePlayer currentPlayerCheck = (Game.GamePlayer)game.PlayersCards[game.Players[i]];
+                    if (currentPlayerCheck.Player.Name == game.CurrentPlayer.Name)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        if(smallestHand > currentPlayerCheck.Cards.Count)
+                        {
+                            handOwner = i;
+                            smallestHand = currentPlayerCheck.Cards.Count;
+                        }
+                    }
+                }
+                if(handOwner != -1)
+                {
+                    PlayerSwapHands(handOwner);
+                }
+            }
+            else
+            {
+                HandSwapSelect handSwapSelect = new HandSwapSelect(game.NumberOfPlayers, game.CurrentPlayerIndex);
+                DialogResult result = handSwapSelect.ShowDialog();
+                if(result == DialogResult.OK)
+                {
+                    PlayerSwapHands(handSwapSelect.ClickResult);
+                }
+            }
+        }
 
         ///////////////////////////////////////////////////////////////////////////////////////
         // Static Methods
@@ -1055,9 +1051,9 @@ namespace Uno
                 {
                     // Loop to make 2 of each face card for the selected color, but only one 0 (standard Uno deck)
                     // only count from 0-12 to exclude draw 4
-                    for (int k = 0; k < 14; k++)
+                    for (int k = 0; k < 13; k++)
                     {
-                        deck.Add(new Card(color, (Card.CardFace)k));
+                        deck.Add(new Card(color, (Card.CardFace)k));    
 
                         // Add the second idenical card, except for 0s
                         if (k != 0)
