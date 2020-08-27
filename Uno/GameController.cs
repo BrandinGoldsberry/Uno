@@ -950,7 +950,7 @@ namespace Uno
 
         public void SwapHandsOnSeven()
         {
-            if(game.CurrentPlayer.Type == Player.PlayerType.Computer)
+            if(game.CurrentPlayer.Type != Player.PlayerType.Human)
             {
                 int smallestHand = int.MaxValue;
                 int handOwner = -1;
