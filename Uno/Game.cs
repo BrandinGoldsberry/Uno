@@ -23,8 +23,8 @@ namespace Uno
         public const int MAXPLAYERS = 4;
 
 
-        
-        
+
+
         //public const bool USEANIMATION = false;
         // NOTE: now in GameOptions, so it can be modified by users
 
@@ -32,7 +32,7 @@ namespace Uno
         /// <summary>
         /// The number of cards in a Uno deck
         /// </summary>
-        public const int MAXUNOCARDS = 116;
+        public const int MAXUNOCARDS = 124;
 
 
 
@@ -40,7 +40,7 @@ namespace Uno
         // Attributes
         ///////////////////////////////////////////////////////////////////////////////////////
 
-        
+
         /// <summary>
         /// Array of cards to be dealt to other players, then used as the discard pile
         /// </summary>
@@ -95,7 +95,7 @@ namespace Uno
         private Card.CardColor wildColor = Card.CardColor.Wild;
 
 
-        
+
 
 
         ///////////////////////////////////////////////////////////////////////////////////////
@@ -203,7 +203,7 @@ namespace Uno
 
                 return color;
             }
-            
+
         }
 
         /// <summary>
@@ -324,10 +324,10 @@ namespace Uno
         /// </summary>
         private Game()
         {
-            
 
-            
-            
+
+
+
         }
 
 
@@ -337,7 +337,7 @@ namespace Uno
         /// <param name="gamePlayers"></param>
         /// <param name="gameOptions"></param>
         public Game(List<Player> gamePlayers, GameOptions gameOptions)
-            :this()
+            : this()
         {
             // store parameters
             players = gamePlayers;
@@ -404,7 +404,7 @@ namespace Uno
             /// </summary>
             public int Score
             {
-                get { return score; }  
+                get { return score; }
                 set { score = value; }
             }
 
@@ -472,7 +472,7 @@ namespace Uno
         ///////////////////////////////////////////////////////////////////////////////////////
 
 
-        
+
 
 
     }

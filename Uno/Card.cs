@@ -10,8 +10,8 @@ using System.Drawing;
 namespace Uno
 {
 
-    
-    
+
+
 
     /// <summary>
     /// Describes a card
@@ -74,6 +74,11 @@ namespace Uno
             /// A draw 2 card
             /// </summary>
             Draw2,
+
+            /// <summary>
+            /// A TNT card that when played, the next person to draw a card get 4 cards
+            /// </summary>
+            TNT,
 
             /// <summary>
             /// A skip card
@@ -151,7 +156,7 @@ namespace Uno
                 int value;
 
                 if (color == CardColor.Wild && face == CardFace.None)
-                    value = 13*4;
+                    value = 13 * 4;
                 else
                     value = (int)color * 13 + (int)face;
 
@@ -180,7 +185,7 @@ namespace Uno
             // Check the card is value, otherwise throw a runtime error
             if (!IsValidCard(theColor, theFace))
                 throw new Exception(CardColorToString(theColor) + " " + CardFaceToString(theFace) + " is not a valid Uno card");
-        
+
             // Save parameters in private attributes
             color = theColor;
             face = theFace;
@@ -263,7 +268,7 @@ namespace Uno
         /// <returns></returns>
         public static CardFace IntToCardFace(int cardInt)
         {
-            return (CardFace) cardInt;
+            return (CardFace)cardInt;
         }
 
         /// <summary>
@@ -273,7 +278,7 @@ namespace Uno
         /// <returns></returns>
         public static CardColor IntToCardColor(int colorInt)
         {
-            return (CardColor) colorInt;
+            return (CardColor)colorInt;
         }
 
         /// <summary>
@@ -296,7 +301,7 @@ namespace Uno
         /// <returns></returns>
         public static string CardColorToString(CardColor cardColor)
         {
-            return cardColor.ToString().Substring(0,1).ToLowerInvariant();
+            return cardColor.ToString().Substring(0, 1).ToLowerInvariant();
         }
 
 
@@ -334,6 +339,10 @@ namespace Uno
 
                 case CardFace.Reverse:
                     ret = "r";
+                    break;
+
+                case CardFace.TNT:
+                    ret = "t";
                     break;
 
                 case CardFace.Skip:
@@ -378,30 +387,7 @@ namespace Uno
             string card = StringForCard(color, face);
             Console.WriteLine(card);
 
-            if (card.Equals("bsa"))
-            {
-                //return Properties.Resources.bsa;
-                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\bsa.png");
-            }
-            else if (card.Equals("gsa"))
-            {
-                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\gsa.png");
-                //return Properties.Resources.gsa;
-            }
-            else if (card.Equals("rsa"))
-            {
-                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\rsa.png");
-                //return Properties.Resources.rsa;
-            }
-            else if (card.Equals("ysa"))
-            {
-                return Image.FromFile("C:\\Users\\wmonk\\Documents\\GitHub\\Uno\\Uno\\Resources\\ysa.png");
-                //return Properties.Resources.ysa;
-            }
-            else
-            {
-                return (Image)Properties.Resources.ResourceManager.GetObject(card);
-            }
+            return (Image)Properties.Resources.ResourceManager.GetObject(card);
 
         }
 
@@ -448,6 +434,7 @@ namespace Uno
                 case CardFace.SkipAll:
                     value = 20;
                     break;
+                case CardFace.TNT:
                 case CardFace.None:
                 case CardFace.Draw4:
                     value = 50;
