@@ -32,7 +32,14 @@ namespace Uno
 
 
             // Sort the players
-            sortPlayersByScore();
+            if(theGame.Options.EnableTeams)
+            {
+                sortPlayersByTeam();
+            } 
+            else
+            {
+                sortPlayersByScore();
+            }
 
 
             // Setup the sorted player views
@@ -64,6 +71,41 @@ namespace Uno
             // Set the scoring method label
             scoringMethodLabel.Text = ( game.Options.ScoringSystem == GameOptions.ScoringSystems.Basic ? "Simple Scoring" : "Card Value Scoring" );
 
+        }
+
+        private void sortPlayersByTeam()
+        {
+            List<SortedPlayerView> tempList = new List<SortedPlayerView>();
+            switch (game.WinningPlayer)
+            {
+                case 0:
+                    tempList.Add(sortedPlayerViews[0]);
+                    tempList.Add(sortedPlayerViews[2]);
+                    tempList.Add(sortedPlayerViews[1]);
+                    tempList.Add(sortedPlayerViews[3]);
+                    break;
+                case 1:
+                    tempList.Add(sortedPlayerViews[1]);
+                    tempList.Add(sortedPlayerViews[3]);
+                    tempList.Add(sortedPlayerViews[0]);
+                    tempList.Add(sortedPlayerViews[2]);
+                    break;
+                case 2:
+                    tempList.Add(sortedPlayerViews[2]);
+                    tempList.Add(sortedPlayerViews[0]);
+                    tempList.Add(sortedPlayerViews[1]);
+                    tempList.Add(sortedPlayerViews[3]);
+                    break;
+                case 3:
+                    tempList.Add(sortedPlayerViews[3]);
+                    tempList.Add(sortedPlayerViews[1]);
+                    tempList.Add(sortedPlayerViews[2]);
+                    tempList.Add(sortedPlayerViews[0]);
+                    break;
+                default:
+                    break;
+            }
+            sortedPlayerViews = tempList;
         }
 
 

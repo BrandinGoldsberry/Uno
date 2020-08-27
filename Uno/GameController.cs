@@ -230,7 +230,7 @@ namespace Uno
                 if (game.CurrentGamePlayer.Finished)
                     game.CurrentGamePlayer.FinishRank = game.NumberOfFinishedPlayers - 1;
 
-                if (!game.Options.EnableTeams && game.NumberOfPlayingPlayers == 1)
+                if (!game.Options.EnableTeams && game.NumberOfFinishedPlayers == 1)
                 {
                     // Show the final results
                     Program.NewSortedPlayersView(game);
@@ -244,6 +244,18 @@ namespace Uno
                 }
                 else if(game.Options.EnableTeams && game.NumberOfFinishedPlayers > 0)
                 {
+                    int count = 0;
+                    foreach (DictionaryEntry curgamePlayer in game.PlayersCards)
+                    {
+                        Player gamePlayer = (Player)curgamePlayer.Key;
+                        Player currentPlayer = game.CurrentPlayer;
+                        if (gamePlayer.Name == currentPlayer.Name)
+                        {
+                            game.WinningPlayer = count;
+                        }
+                        count++;
+                    }
+
                     Program.NewSortedPlayersView(game);
 
                     gameView.closeGameWithoutDialog = true;

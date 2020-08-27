@@ -39,6 +39,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.typeBadge = new System.Windows.Forms.PictureBox();
+            this.TeamIndex = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.typeBadge)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,11 +157,22 @@
             this.typeBadge.TabIndex = 15;
             this.typeBadge.TabStop = false;
             // 
+            // TeamIndex
+            // 
+            this.TeamIndex.AutoSize = true;
+            this.TeamIndex.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TeamIndex.Location = new System.Drawing.Point(6, 66);
+            this.TeamIndex.Name = "TeamIndex";
+            this.TeamIndex.Size = new System.Drawing.Size(44, 17);
+            this.TeamIndex.TabIndex = 16;
+            this.TeamIndex.Text = "Team";
+            // 
             // SortedPlayerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.TeamIndex);
             this.Controls.Add(this.typeBadge);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -193,6 +205,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox typeBadge;
-
+        private System.Windows.Forms.Label TeamIndex;
     }
 }

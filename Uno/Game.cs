@@ -185,6 +185,8 @@ namespace Uno
             set { reverse = value; }
         }
 
+        public int WinningPlayer { get; set; }
+
         /// <summary>
         /// Gets the color of the last card played (considering wilds as well)
         /// </summary>
@@ -345,9 +347,9 @@ namespace Uno
             if(gameOptions.EnableTeams)
             {
                 gamePlayers[0].Team = 1;
-                gamePlayers[0].Team = 1;
                 gamePlayers[1].Team = 2;
-                gamePlayers[1].Team = 2;
+                gamePlayers[2].Team = 1;
+                gamePlayers[3].Team = 2;
 
                 //Player count gets set to 4 for teams
                 GamePlayer[] currentGamePlayers =
