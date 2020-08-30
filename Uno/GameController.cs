@@ -70,11 +70,7 @@ namespace Uno
         private GameView gameView;
 
         private int cardsToDraw = 0;
-        private bool drawCard = false;
         private bool skip = false;
-        private bool skipAll = false;
-        private bool tnt = false;
-        private int numberOfPeopleToSkip = 0;
 
         private Timer computerPlayerTimer = new Timer();
         
@@ -495,53 +491,30 @@ namespace Uno
 
         private void nextPlayer()
         {
-            if (skipAll)
+            // Stop if the game is all finished
+            if (game.Finished)
+                return;
+
+
+            // Move onto the next player
+            game.CurrentPlayerIndex = getNextPlayerIndex(game.CurrentPlayerIndex);
+
+            // Check if the player is actually already finished (but the whole game isn't)
+            if (game.CurrentGamePlayer.Finished)
             {
-                skipAll = false;
-                // Stop if the game is all finished
-                if (game.Finished)
-                    return;
-
-                // Check if the player is actually already finished (but the whole game isn't)
-                if (game.CurrentGamePlayer.Finished)
-                {
-                    nextPlayer();
-                    return;
-                }
-
-
-                // Do the actions required for the action cards
-                handleActions();
-
-
-                // Get ready for the next player
-                setupCurrentPlayer();
+                nextPlayer();
+                return;
             }
-            else
-            {
-                // Stop if the game is all finished
-                if (game.Finished)
-                    return;
 
+            flipOtherCards(game.PlayersCards, game.CurrentGamePlayer, gameView);
 
-                // Move onto the next player
-                game.CurrentPlayerIndex = getNextPlayerIndex(game.CurrentPlayerIndex);
+            // Do the actions required for the action cards
+            handleActions();
+            
+            // Set current player's cards to be visible, and everyone else's cards to be flipped over
 
-                // Check if the player is actually already finished (but the whole game isn't)
-                if (game.CurrentGamePlayer.Finished)
-                {
-                    nextPlayer();
-                    return;
-                }
-
-
-                // Do the actions required for the action cards
-                handleActions();
-
-
-                // Get ready for the next player
-                setupCurrentPlayer();
-            }
+            // Get ready for the next player
+            setupCurrentPlayer();
 
 
         }
@@ -596,38 +569,15 @@ namespace Uno
                 index++;
 
 
-            if (tnt)
-            {
-                tnt = false;
-                // Add a card from the deck to the current player's hand
-                game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
-                game.Deck.RemoveAt(0);
-                game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
-                game.Deck.RemoveAt(0);
-                game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
-                game.Deck.RemoveAt(0);
-                game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
-                game.Deck.RemoveAt(0);
+            // Add a card from the deck to the current player's hand
+            game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
+            game.Deck.RemoveAt(0);
 
-                // Add to the number of cards picked up statistic
-                game.CurrentGamePlayer.NumberOfCardsPickedUp += 4;
+            // Add to the number of cards picked up statistic
+            game.CurrentGamePlayer.NumberOfCardsPickedUp++;
 
-                // Successfully picked up a card
-                return true;
-
-            }
-            else
-            {
-                // Add a card from the deck to the current player's hand
-                game.CurrentGamePlayer.Cards.Insert(index, game.Deck[0]);
-                game.Deck.RemoveAt(0);
-
-                // Add to the number of cards picked up statistic
-                game.CurrentGamePlayer.NumberOfCardsPickedUp++;
-
-                // Successfully picked up a card
-                return true;
-            }
+            // Successfully picked up a card
+            return true;
         }
 
 
@@ -685,14 +635,6 @@ namespace Uno
                     skip = true;
                     break;
 
-                case Card.CardFace.SkipAll:
-                    skipAll = true;
-                    break;
-
-                case Card.CardFace.TNT:
-                    tnt = true;
-                    break;
-
                 case Card.CardFace.Reverse:
                     reverse();
                     break;
@@ -724,25 +666,12 @@ namespace Uno
                 return;
             }
 
-            // Skip every player if a skipAll card was played
-            if (skipAll)
-            {
-                skipAll = false;
-                return;
-            }
 
             // Force the player to draw their cards
             // TODO: give the next player an opportunity to play another draw card on top, etc.
             if (cardsToDraw > 0 && game.NumberOfPlayingPlayers > 1)
             {
                 bool success;
-                drawCard = true;
-
-                if (tnt)
-                {
-                    cardsToDraw += 4;
-                    tnt = false;
-                }
 
                 for (int i = 0; i < cardsToDraw; i++)
                 {
@@ -754,13 +683,13 @@ namespace Uno
 #endif
                 }
 
-                drawCard = false;
                 // Reset to 0
                 cardsToDraw = 0;
 
                 // Move onto the next player
                 nextPlayer();
                 return;
+
 
             }
         }
@@ -1122,7 +1051,7 @@ namespace Uno
                 {
                     // Loop to make 2 of each face card for the selected color, but only one 0 (standard Uno deck)
                     // only count from 0-12 to exclude draw 4
-                    for (int k = 0; k < 15; k++)
+                    for (int k = 0; k < 13; k++)
                     {
                         deck.Add(new Card(color, (Card.CardFace)k));    
 
