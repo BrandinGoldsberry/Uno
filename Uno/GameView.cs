@@ -17,12 +17,7 @@ namespace Uno
         private Game game;
         private GameController controller;
 
-        // Stores the relationship between cards and their picture boxes on the form
-<<<<<<< HEAD
         public Hashtable cardsViews = new Hashtable(108);
-=======
-        private Hashtable cardsViews = new Hashtable(124);
->>>>>>> parent of a7a4bf5... Merge branch 'master' into OnePersonEnd
 
         private List<Label> playerLabels = new List<Label>(Game.MAXPLAYERS);
         private List<PictureBox> playerComputerBadges = new List<PictureBox>(Game.MAXPLAYERS);
@@ -57,12 +52,6 @@ namespace Uno
             // Save the parameters
             game = newGame;
             controller = gameController;
-
-<<<<<<< HEAD
-            
-=======
-
->>>>>>> parent of a7a4bf5... Merge branch 'master' into OnePersonEnd
 
 
             // Create picture boxes for each card, and store them in a hash table
@@ -117,15 +106,9 @@ namespace Uno
 
 
 
-<<<<<<< HEAD
             #if DEBUG
                 debugControls.Visible = true;
             #endif
-=======
-#if DEBUG
-                debugControls.Visible = true;
-#endif
->>>>>>> parent of a7a4bf5... Merge branch 'master' into OnePersonEnd
         }
 
         void GameView_FormClosing(object sender, FormClosingEventArgs e)
@@ -133,12 +116,7 @@ namespace Uno
             if (closeGameWithoutDialog)
             {
                 confirmedClose = true;
-<<<<<<< HEAD
             } else if (!confirmedClose)
-=======
-            }
-            else if (!confirmedClose)
->>>>>>> parent of a7a4bf5... Merge branch 'master' into OnePersonEnd
             {
                 DialogResult result = MessageBox.Show(this, "Are you sure you want to close this Uno game?", "Close Uno Game", MessageBoxButtons.OKCancel);
 
@@ -149,22 +127,12 @@ namespace Uno
             }
         }
 
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> parent of a7a4bf5... Merge branch 'master' into OnePersonEnd
-
         /*
          * Using Background images without reducing performance
          * http://blogs.msdn.com/mhendersblog/archive/2005/10/12/480156.aspx
          * and http://www.eggheadcafe.com/software/aspnet/30750705/help-with-form-painting-p.aspx
          */
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> parent of a7a4bf5... Merge branch 'master' into OnePersonEnd
         private Bitmap renderBmp;
 
         public override Image BackgroundImage
@@ -184,11 +152,6 @@ namespace Uno
                 return renderBmp;
             }
         }
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> parent of a7a4bf5... Merge branch 'master' into OnePersonEnd
 
 
         /// <summary>
@@ -345,7 +308,6 @@ namespace Uno
             Tweener.add(t);
         }
 
-<<<<<<< HEAD
         public PictureBox createPictureBoxForCard(Card card)
         {
             // Create the new picture box
@@ -353,17 +315,6 @@ namespace Uno
             
             // Set the tag so its card can be easily retrieved
             pictureBox.Tag = card;
-            
-=======
-        private PictureBox createPictureBoxForCard(Card card)
-        {
-            // Create the new picture box
-            PictureBox pictureBox = new PictureBox();
-
-            // Set the tag so its card can be easily retrieved
-            pictureBox.Tag = card;
-
->>>>>>> parent of a7a4bf5... Merge branch 'master' into OnePersonEnd
             // Set some properties
             pictureBox.Image = card.Image;
             pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -521,11 +472,6 @@ namespace Uno
         {
             // First, check if it's ok to end the game
             if (!endGame("End Game", "Are you sure you want to end this game?")) return;
-<<<<<<< HEAD
-            
-=======
-
->>>>>>> parent of a7a4bf5... Merge branch 'master' into OnePersonEnd
             // Tell the controller to end the game
             controller.EndGame();
         }
@@ -537,11 +483,6 @@ namespace Uno
         }
 
 
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> parent of a7a4bf5... Merge branch 'master' into OnePersonEnd
         void endGameHighlightTimer_Tick(object sender, EventArgs e)
         {
             // Alterate the visibility property of the end highlighter on each timer tick
