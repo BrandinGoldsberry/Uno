@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Resources;
 using System.Drawing;
+using System.Collections;
+using System.Windows.Forms;
 
 namespace Uno
 {
@@ -114,6 +116,7 @@ namespace Uno
 
         private CardColor color;
         private CardFace face;
+        private Image image;
 
 
         ///////////////////////////////////////////////////////////////////////////////////////
@@ -143,6 +146,8 @@ namespace Uno
         public Image Image
         {
             get { return ImageForCard(color, face); }
+            set { image = value; }
+
         }
 
 
@@ -387,6 +392,46 @@ namespace Uno
             return (Image)Properties.Resources.ResourceManager.GetObject(card);
         }
 
+        public static void SetOtherCardsToBack(Hashtable playerCards, Game.GamePlayer currentPlayer, GameView gameview)
+        {
+            gameview.ReDraw();
+            gameview.Refresh();
+            foreach (DictionaryEntry player in playerCards)
+            {
+                if (player.Value == currentPlayer)
+                {
+                    foreach (Card card in currentPlayer.Cards)
+                    {
+                        card.Image = ImageForCard(card.Color, card.Face);
+                        //gameview.cardsViews[card] = gameview.createPictureBoxForCard(card);
+                        foreach (DictionaryEntry cardView in gameview.cardsViews)
+                        {
+                            if (cardView.Key == card)
+                            {
+                                ((PictureBox)cardView.Value).Image = ImageForCard(card.Color, card.Face);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Card card in ((Game.GamePlayer)player.Value).Cards)
+                    {
+                        card.Image = Properties.Resources.back;
+                        //gameview.cardsViews[card] = gameview.createPictureBoxForCard(card);
+                        foreach (DictionaryEntry cardView in gameview.cardsViews)
+                        {
+                            if (cardView.Key == card)
+                            {
+                                ((PictureBox)cardView.Value).Image = Properties.Resources.back;
+                            }
+                        }
+                    }
+                }
+            }
+            gameview.ReDraw();
+            gameview.Refresh();
+        }
 
         /// <summary>
         /// Check if a color/face combination is a valid Uno card

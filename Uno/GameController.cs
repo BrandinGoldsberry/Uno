@@ -123,6 +123,8 @@ namespace Uno
             foreach (System.Collections.DictionaryEntry p in game.PlayersCards)
                 sortCards((p.Value as Game.GamePlayer).Cards);
 
+            flipOtherCards(game.PlayersCards, game.CurrentGamePlayer, gameView);
+
             // Perform the action of the first card (if applicable)
             performAction(Game.CurrentCard);
             handleActions();
@@ -529,6 +531,7 @@ namespace Uno
                     return;
                 }
 
+                flipOtherCards(game.PlayersCards, game.CurrentGamePlayer, gameView);
 
                 // Do the actions required for the action cards
                 handleActions();
@@ -538,6 +541,10 @@ namespace Uno
                 setupCurrentPlayer();
             }
 
+        }
+        private void flipOtherCards(Hashtable playerCards, Game.GamePlayer currentPlayer, GameView gameview)
+        {
+            Card.SetOtherCardsToBack(playerCards, currentPlayer, gameview);
         }
 
         /// <summary>
