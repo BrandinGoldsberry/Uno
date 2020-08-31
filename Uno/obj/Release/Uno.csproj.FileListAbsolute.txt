@@ -50,3 +50,27 @@ C:\Users\wmonk\Documents\GitHub\Uno\Uno\obj\Release\Uno.csproj.GenerateResource.
 C:\Users\wmonk\Documents\GitHub\Uno\Uno\obj\Release\Uno.csproj.CoreCompileInputs.cache
 C:\Users\wmonk\Documents\GitHub\Uno\Uno\obj\Release\Uno.exe
 C:\Users\wmonk\Documents\GitHub\Uno\Uno\obj\Release\Uno.pdb
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\bin\Release\Uno.exe.config
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\bin\Release\Uno.exe.manifest
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\bin\Release\Uno.application
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\bin\Release\Uno.exe
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\bin\Release\Uno.pdb
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\bin\Release\documentation.xml
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.csprojAssemblyReference.cache
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.AboutBox.resources
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.GameOptionsView.resources
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.GameView.resources
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.Help.resources
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.Properties.Resources.resources
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.SortedPlayersView.resources
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.SortedPlayerView.resources
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.StartupDisplay.resources
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.StartupPlayerView.resources
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.WildColorChooser.resources
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.csproj.GenerateResource.cache
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.csproj.CoreCompileInputs.cache
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.TrustInfo.xml
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.exe.manifest
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.application
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.exe
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.pdb
