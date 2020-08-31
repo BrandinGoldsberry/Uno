@@ -170,7 +170,7 @@ namespace Uno
         public CardPlayStatus SelectCard(Card card)
         {
             // Don't let humans play on behalf of the computer!
-            if (game.CurrentPlayer.Type != Player.PlayerType.Human)
+            if (game.CurrentPlayer.Type == Player.PlayerType.Human)
                 return CardPlayStatus.ComputerPlayer;
 
 

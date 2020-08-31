@@ -338,7 +338,7 @@ namespace Uno
         void card_Click(object sender, EventArgs e)
         {
             // Select the card, and save the result
-            GameController.CardPlayStatus result = controller.SelectCard((sender as PictureBox).Tag as Card);
+            GameController.CardPlayStatus result = controller.PlaySelectedCard((sender as PictureBox).Tag as Card);
 
             // Present the result to the user
             if (result != GameController.CardPlayStatus.Success)
