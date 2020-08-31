@@ -174,31 +174,7 @@ namespace Uno
                 return CardPlayStatus.ComputerPlayer;
 
 
-            // Check if the card can be played before asking for wild colour
-            CardPlayStatus wildCheckStatus = CanPlayCardStatus(card);
-            if (wildCheckStatus != CardPlayStatus.Success)
-                return wildCheckStatus;
 
-            // Ask for the color for a wild card
-            if (card.Color == Card.CardColor.Wild)
-            {
-                // Show the color chooser dialog form
-                WildColorChooser wildColorChooser = new WildColorChooser();
-                wildColorChooser.ShowDialog();
-
-                // Check if a colour was chosen, or if the action was cancelled
-                if (wildColorChooser.DialogResult == DialogResult.OK)
-                {
-                    // Remember the chosen wild color
-                    game.WildColor = wildColorChooser.Color;
-                }
-                else
-                {
-                    // Return that the user cancelled playing the card
-                    return CardPlayStatus.Cancelled;
-                }
-
-            }
 
             // Play the card, with the selected wild color already set if necessary
             return PlaySelectedCard(card);
@@ -212,6 +188,40 @@ namespace Uno
         {
             // Check if the card  is allowed to be played
             CardPlayStatus status = CanPlayCardStatus(card);
+
+            // Ask for the color for a wild card
+            if (card.Color == Card.CardColor.Wild)
+            {
+                if(game.CurrentPlayer.Type == Player.PlayerType.Human)
+                {
+                    // Check if the card can be played before asking for wild colour
+                    CardPlayStatus wildCheckStatus = CanPlayCardStatus(card);
+                    if (wildCheckStatus != CardPlayStatus.Success)
+                        return wildCheckStatus;
+
+                    // Show the color chooser dialog form
+                    WildColorChooser wildColorChooser = new WildColorChooser();
+                    wildColorChooser.ShowDialog();
+
+                    // Check if a colour was chosen, or if the action was cancelled
+                    if (wildColorChooser.DialogResult == DialogResult.OK)
+                    {
+                        // Remember the chosen wild color
+                        game.WildColor = wildColorChooser.Color;
+                    }
+                    else
+                    {
+                        // Return that the user cancelled playing the card
+                        return CardPlayStatus.Cancelled;
+                    }
+                } 
+                else
+                {
+                    Random random = new Random();
+                    game.WildColor = Card.IntToCardColor(random.Next(0, 3));
+                }
+
+            }
 
             // Check that the card is allowed
             if (status == CardPlayStatus.Success)
