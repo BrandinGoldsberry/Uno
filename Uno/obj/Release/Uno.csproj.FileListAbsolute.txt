@@ -74,3 +74,4 @@ C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Cod
 C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.application
 C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.exe
 C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.pdb
+C:\Users\Logan Tyler\Desktop\Classes\Quarter 8\Software Projects in Existing Code\GroupProject\Uno\obj\Release\Uno.HandSwapSelect.resources

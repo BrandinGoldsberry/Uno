@@ -17,7 +17,7 @@ namespace Uno
         private Game game;
         private GameController controller;
 
-        public Hashtable cardsViews = new Hashtable(108);
+        public Hashtable cardsViews = new Hashtable(132);
 
         private List<Label> playerLabels = new List<Label>(Game.MAXPLAYERS);
         private List<PictureBox> playerComputerBadges = new List<PictureBox>(Game.MAXPLAYERS);
@@ -56,7 +56,10 @@ namespace Uno
 
             // Create picture boxes for each card, and store them in a hash table
             foreach (Card c in game.Deck)
+            {
+                //Console.WriteLine(c);
                 cardsViews.Add(c, createPictureBoxForCard(c));
+            }
 
 
 

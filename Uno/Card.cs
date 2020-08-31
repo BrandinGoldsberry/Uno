@@ -98,6 +98,11 @@ namespace Uno
             Reverse,
 
             /// <summary>
+            /// A Random Draw card
+            /// </summary>
+            RandomDraw,
+
+            /// <summary>
             /// A Wild Draw 4 card
             /// </summary>
             Draw4,
@@ -342,6 +347,10 @@ namespace Uno
                     ret = "d4";
                     break;
 
+                case CardFace.RandomDraw:
+                    ret = "rd";
+                    break;
+
                 case CardFace.Reverse:
                     ret = "r";
                     break;
@@ -493,6 +502,7 @@ namespace Uno
                 case CardFace.TNT:
                 case CardFace.None:
                 case CardFace.Draw4:
+                case CardFace.RandomDraw:
                     value = 50;
                     break;
             }

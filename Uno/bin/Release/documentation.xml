@@ -85,6 +85,11 @@
             A reverse card
             </summary>
         </member>
+        <member name="F:Uno.Card.CardFace.RandomDraw">
+            <summary>
+            A Random Draw card
+            </summary>
+        </member>
         <member name="F:Uno.Card.CardFace.Draw4">
             <summary>
             A Wild Draw 4 card
@@ -471,7 +476,7 @@
             </summary>
             <param name="card"></param>
         </member>
-        <member name="M:Uno.GameController.SelectCard(Uno.Card,Uno.Player,System.Boolean)">
+        <member name="M:Uno.GameController.PlaySelectedCard(Uno.Card)">
             <summary>
             Choose a card for the current player to play
             </summary>
@@ -543,6 +548,11 @@
             Perform the action on an action card
             </summary>
             <param name="card">The card played</param>
+        </member>
+        <member name="M:Uno.GameController.drawRandomCards">
+            <summary>
+            All players draw anywhere from 1 to 5 cards
+            </summary>
         </member>
         <member name="M:Uno.GameController.handleActions">
             <summary>
@@ -683,6 +693,23 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="F:Uno.HandSwapSelect.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Uno.HandSwapSelect.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Uno.HandSwapSelect.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="M:Uno.Help.SelectPage(Uno.Help.HelpPage)">
             <summary>
             Select a page to view
@@ -731,6 +758,11 @@
         <member name="P:Uno.Player.Rank">
             <summary>
             The rank of the player. Will be calculated at the end of each game, when the list is sorted
+            </summary>
+        </member>
+        <member name="P:Uno.Player.Team">
+            <summary>
+            The team index of the player, helps when displaying the results
             </summary>
         </member>
         <member name="M:Uno.Player.#ctor">
@@ -891,6 +923,11 @@
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
+        <member name="P:Uno.Properties.Resources.brd">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="P:Uno.Properties.Resources.bs">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
@@ -997,6 +1034,11 @@
             </summary>
         </member>
         <member name="P:Uno.Properties.Resources.gr">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.grd">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
@@ -1121,6 +1163,11 @@
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
+        <member name="P:Uno.Properties.Resources.rrd">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="P:Uno.Properties.Resources.rs">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
@@ -1217,6 +1264,11 @@
             </summary>
         </member>
         <member name="P:Uno.Properties.Resources.yr">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.yrd">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
