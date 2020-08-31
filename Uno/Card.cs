@@ -392,7 +392,7 @@ namespace Uno
             return (Image)Properties.Resources.ResourceManager.GetObject(card);
         }
 
-        public static void SetOtherCardsToBack(Hashtable playerCards, Game.GamePlayer currentPlayer, GameView gameview)
+        public static void SetOtherCardsToBack(Hashtable playerCards, Game.GamePlayer currentPlayer, GameView gameview, bool isTeams)
         {
             gameview.ReDraw();
             gameview.Refresh();
@@ -401,6 +401,21 @@ namespace Uno
                 if (player.Value == currentPlayer)
                 {
                     foreach (Card card in currentPlayer.Cards)
+                    {
+                        card.Image = ImageForCard(card.Color, card.Face);
+                        //gameview.cardsViews[card] = gameview.createPictureBoxForCard(card);
+                        foreach (DictionaryEntry cardView in gameview.cardsViews)
+                        {
+                            if (cardView.Key == card)
+                            {
+                                ((PictureBox)cardView.Value).Image = ImageForCard(card.Color, card.Face);
+                            }
+                        }
+                    }
+                }
+                else if (isTeams && ((Game.GamePlayer)player.Value).TeamMate == currentPlayer)
+                {
+                    foreach (Card card in ((Game.GamePlayer)player.Value).Cards)
                     {
                         card.Image = ImageForCard(card.Color, card.Face);
                         //gameview.cardsViews[card] = gameview.createPictureBoxForCard(card);

@@ -52,6 +52,10 @@ namespace Uno
             cardsPlayedLabel.Text = gamePlayer.NumberOfCardsPlayed.ToString();
             
             ordinalLabel.Text = GetOrdinalStringForInt(player.Rank + 1);
+            if(thePlayer.Team != 0)
+            {
+                TeamIndex.Text += " " + thePlayer.Team;
+            }
         }
 
         

@@ -32,6 +32,7 @@ namespace Uno
         public bool SwapHandsWith0          { get; set; }
         public bool SwapHandsWith7          { get; set; }
         public bool AllowDraw4Always        { get; set; }
+        public bool EnableTeams             { get; set; }
         //public bool AllowPickupPutDown    { get; set; }
         //public bool AllowDrawStacking     { get; set; }
 

@@ -141,18 +141,18 @@ namespace Uno
 
             // Show the game view
             gameView.Show();
+            
+            //if (game.NumberOfPlayingPlayers == 1)
+            //{
+            //    // Show the final results
+            //    Program.NewSortedPlayersView(game);
 
-            if (game.NumberOfPlayingPlayers == 1)
-            {
-                // Show the final results
-                Program.NewSortedPlayersView(game);
+            //    // Setting this bool to true to end the game without dialog box
+            //    gameView.closeGameWithoutDialog = true;
 
-                // Setting this bool to true to end the game without dialog box
-                gameView.closeGameWithoutDialog = true;
-
-                // Close the game view
-                gameView.Close();
-            }
+            //    // Close the game view
+            //    gameView.Close();
+            //}
         }
 
 
@@ -230,7 +230,7 @@ namespace Uno
                 if (game.CurrentGamePlayer.Finished)
                     game.CurrentGamePlayer.FinishRank = game.NumberOfFinishedPlayers - 1;
 
-                if (game.NumberOfPlayingPlayers == 1)
+                if (!game.Options.EnableTeams && game.NumberOfFinishedPlayers == 1)
                 {
                     // Show the final results
                     Program.NewSortedPlayersView(game);
@@ -240,11 +240,36 @@ namespace Uno
 
                     // Close the game view
                     gameView.Close();
+                    return status;
+                }
+                else if(game.Options.EnableTeams && game.NumberOfFinishedPlayers > 0)
+                {
+                    int count = 0;
+                    foreach (DictionaryEntry curgamePlayer in game.PlayersCards)
+                    {
+                        Player gamePlayer = (Player)curgamePlayer.Key;
+                        Player currentPlayer = game.CurrentPlayer;
+                        if (gamePlayer.Name == currentPlayer.Name)
+                        {
+                            game.WinningPlayer = count;
+                        }
+                        count++;
+                    }
+
+                    Program.NewSortedPlayersView(game);
+
+                    gameView.closeGameWithoutDialog = true;
+
+                    gameView.Close();
+                    return status;
+                }
+                else
+                {
+                    // Setup next player, and update the game view
+                    nextPlayer();
+                    gameView.ReDraw();
                 }
 
-                // Setup next player, and update the game view
-                nextPlayer();
-                gameView.ReDraw();
             }
 
             return status;
@@ -544,7 +569,7 @@ namespace Uno
         }
         private void flipOtherCards(Hashtable playerCards, Game.GamePlayer currentPlayer, GameView gameview)
         {
-            Card.SetOtherCardsToBack(playerCards, currentPlayer, gameview);
+            Card.SetOtherCardsToBack(playerCards, currentPlayer, gameview, game.Options.EnableTeams);
         }
 
         /// <summary>
@@ -844,14 +869,8 @@ namespace Uno
         /// </summary>
         private void startComputerMove()
         {
-
-            if (game.NumberOfPlayingPlayers == 1)
-            {
-                // Close the game view
-                gameView.Close();
-            }
             // Check the next player actually is a computer
-            else if (game.CurrentPlayer.Type != Player.PlayerType.Human)
+            if (game.CurrentPlayer.Type != Player.PlayerType.Human)
             {
                 // Start a timer to add some delay before the computer moves
                 computerPlayerTimer.Start();
@@ -1046,6 +1065,58 @@ namespace Uno
             }
         }
 
+        private void PlayerSwapHands(int? PlayerIndex)
+        {
+            int Player = PlayerIndex ?? default;
+            Game.GamePlayer TargetPlayer = game.PlayersCards[game.Players[Player]] as Game.GamePlayer;
+            Game.GamePlayer CurrentPlayer = game.PlayersCards[game.Players[game.CurrentPlayerIndex]] as Game.GamePlayer;
+
+            List<Card> targetPlayerCards = TargetPlayer.Cards;
+            List<Card> currentPlayerCards = CurrentPlayer.Cards;
+
+            TargetPlayer.Cards = currentPlayerCards;
+            CurrentPlayer.Cards = targetPlayerCards;
+            nextPlayer();
+            gameView.ReDraw();
+        }
+
+        public void SwapHandsOnSeven()
+        {
+            if(game.CurrentPlayer.Type != Player.PlayerType.Human)
+            {
+                int smallestHand = int.MaxValue;
+                int handOwner = -1;
+                for(int i = 0; i < game.PlayersCards.Count; i++)
+                {
+                    Game.GamePlayer currentPlayerCheck = (Game.GamePlayer)game.PlayersCards[game.Players[i]];
+                    if (currentPlayerCheck.Player.Name == game.CurrentPlayer.Name)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        if(smallestHand > currentPlayerCheck.Cards.Count)
+                        {
+                            handOwner = i;
+                            smallestHand = currentPlayerCheck.Cards.Count;
+                        }
+                    }
+                }
+                if(handOwner != -1)
+                {
+                    PlayerSwapHands(handOwner);
+                }
+            }
+            else
+            {
+                HandSwapSelect handSwapSelect = new HandSwapSelect(game.NumberOfPlayers, game.CurrentPlayerIndex);
+                DialogResult result = handSwapSelect.ShowDialog();
+                if(result == DialogResult.OK)
+                {
+                    PlayerSwapHands(handSwapSelect.ClickResult);
+                }
+            }
+        }
 
         ///////////////////////////////////////////////////////////////////////////////////////
         // Static Methods

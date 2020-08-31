@@ -187,6 +187,8 @@ namespace Uno
             set { reverse = value; }
         }
 
+        public int WinningPlayer { get; set; }
+
         /// <summary>
         /// Gets the color of the last card played (considering wilds as well)
         /// </summary>
@@ -343,10 +345,40 @@ namespace Uno
             players = gamePlayers;
             options = gameOptions;
 
-            // Create entries for each player in the hash table
-            foreach (Player p in players)
+
+            if(gameOptions.EnableTeams)
             {
-                playersCards.Add(p, new GamePlayer(p));
+                gamePlayers[0].Team = 1;
+                gamePlayers[1].Team = 2;
+                gamePlayers[2].Team = 1;
+                gamePlayers[3].Team = 2;
+
+                //Player count gets set to 4 for teams
+                GamePlayer[] currentGamePlayers =
+                {
+                    new GamePlayer(gamePlayers[0]),
+                    new GamePlayer(gamePlayers[1]),
+                    new GamePlayer(gamePlayers[2]),
+                    new GamePlayer(gamePlayers[3])
+                };
+
+                currentGamePlayers[0].TeamMate = currentGamePlayers[2];
+                currentGamePlayers[1].TeamMate = currentGamePlayers[3];
+                currentGamePlayers[2].TeamMate = currentGamePlayers[0];
+                currentGamePlayers[3].TeamMate = currentGamePlayers[1];
+
+                playersCards.Add(gamePlayers[0], currentGamePlayers[0]);
+                playersCards.Add(gamePlayers[1], currentGamePlayers[1]);
+                playersCards.Add(gamePlayers[2], currentGamePlayers[2]);
+                playersCards.Add(gamePlayers[3], currentGamePlayers[3]);
+            }
+            else
+            {
+                // Create entries for each player in the hash table
+                foreach (Player p in players)
+                {
+                    playersCards.Add(p, new GamePlayer(p));
+                }
             }
         }
 
@@ -380,6 +412,8 @@ namespace Uno
             int turns = 0;
             int finishRank = -1;
 
+
+            public GamePlayer TeamMate { get; set; }
 
             /// <summary>
             /// The player represented

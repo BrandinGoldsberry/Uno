@@ -44,6 +44,7 @@
             this.stopAfterFirst = new System.Windows.Forms.CheckBox();
             this.requiredOfficialLabel = new System.Windows.Forms.Label();
             this.swapWith7 = new System.Windows.Forms.CheckBox();
+            this.EnableTeams = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.computerDelayUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardsPerPlayerUpDown)).BeginInit();
             this.SuspendLayout();
@@ -128,7 +129,7 @@
             // doneButton
             // 
             this.doneButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.doneButton.Location = new System.Drawing.Point(355, 345);
+            this.doneButton.Location = new System.Drawing.Point(355, 373);
             this.doneButton.Name = "doneButton";
             this.doneButton.Size = new System.Drawing.Size(75, 23);
             this.doneButton.TabIndex = 9;
@@ -150,7 +151,7 @@
             // helpButton
             // 
             this.helpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.helpButton.Location = new System.Drawing.Point(274, 345);
+            this.helpButton.Location = new System.Drawing.Point(274, 373);
             this.helpButton.Name = "helpButton";
             this.helpButton.Size = new System.Drawing.Size(75, 23);
             this.helpButton.TabIndex = 8;
@@ -248,12 +249,24 @@
             this.swapWith7.Text = "Swap hands with a \'7\' card";
             this.swapWith7.UseVisualStyleBackColor = true;
             // 
+            // EnableTeams
+            // 
+            this.EnableTeams.AutoSize = true;
+            this.EnableTeams.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.EnableTeams.Location = new System.Drawing.Point(149, 305);
+            this.EnableTeams.Name = "EnableTeams";
+            this.EnableTeams.Size = new System.Drawing.Size(94, 17);
+            this.EnableTeams.TabIndex = 11;
+            this.EnableTeams.Text = "Enable Teams";
+            this.EnableTeams.UseVisualStyleBackColor = true;
+            // 
             // GameOptionsView
             // 
             this.AcceptButton = this.doneButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 380);
+            this.ClientSize = new System.Drawing.Size(442, 408);
+            this.Controls.Add(this.EnableTeams);
             this.Controls.Add(this.swapWith7);
             this.Controls.Add(this.requiredOfficialLabel);
             this.Controls.Add(this.scoringMethodDropDown);
@@ -301,5 +314,6 @@
         private System.Windows.Forms.CheckBox stopAfterFirst;
         private System.Windows.Forms.Label requiredOfficialLabel;
         private System.Windows.Forms.CheckBox swapWith7;
+        private System.Windows.Forms.CheckBox EnableTeams;
     }
 }

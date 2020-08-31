@@ -74,6 +74,14 @@ namespace Uno
             set { rank = value; }
         }
 
+        /// <summary>
+        /// The team index of the player, helps when displaying the results
+        /// </summary>
+        public short Team
+        {
+            get;
+            set;
+        }
 
 
 
