@@ -26,7 +26,7 @@ namespace Uno
         // Timer to flash the end game button highlight
         Timer endGameHighlightTimer = new Timer();
 
-        // Is this the first time the view has been drawn?
+        // Is this the first time the view has been drawn
         bool first = true;
 
         // Doesn't prompt the user to close the form
