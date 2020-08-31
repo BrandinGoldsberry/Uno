@@ -701,6 +701,7 @@ namespace Uno
         /// <param name="card">The card played</param>
         private void performAction(Card card)
         {
+            Console.WriteLine(card);
             switch (card.Face)
             {
                 case Card.CardFace.Draw2:
@@ -710,6 +711,10 @@ namespace Uno
                 case Card.CardFace.Draw4:
                     cardsToDraw += 4;
                     // Selecting a color is handled by the SelectCard method, when the card is played
+                    break;
+
+                case Card.CardFace.RandomDraw:
+                    drawRandomCards();
                     break;
 
                 case Card.CardFace.Skip:
@@ -736,6 +741,22 @@ namespace Uno
                     if (game.Options.SwapHandsWith7)
                         SwapHandsOnSeven();
                     break;
+            }
+        }
+
+        /// <summary>
+        /// All players draw anywhere from 1 to 5 cards
+        /// </summary>
+        private void drawRandomCards()
+        {
+            var rand = new Random();
+            for(int i = 0; i < game.NumberOfPlayers; i++)
+            {
+                if (!Game.CurrentGamePlayer.Finished)
+                {
+                    cardsToDraw += rand.Next(1, 6);
+                    handleActions();
+                }
             }
         }
 
@@ -1147,7 +1168,7 @@ namespace Uno
                 {
                     // Loop to make 2 of each face card for the selected color, but only one 0 (standard Uno deck)
                     // only count from 0-12 to exclude draw 4
-                    for (int k = 0; k < 14; k++)
+                    for (int k = 0; k < 16; k++)
                     {
                         deck.Add(new Card(color, (Card.CardFace)k));
 
