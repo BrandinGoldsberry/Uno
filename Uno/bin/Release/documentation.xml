@@ -65,9 +65,19 @@
             A draw 2 card
             </summary>
         </member>
+        <member name="F:Uno.Card.CardFace.TNT">
+            <summary>
+            A TNT card that when played, the next person to draw a card get 4 cards
+            </summary>
+        </member>
         <member name="F:Uno.Card.CardFace.Skip">
             <summary>
             A skip card
+            </summary>
+        </member>
+        <member name="F:Uno.Card.CardFace.SkipAll">
+            <summary>
+            A skip all card that skips everyone and comes back to you
             </summary>
         </member>
         <member name="F:Uno.Card.CardFace.Reverse">
@@ -96,7 +106,7 @@
             </summary>
         </member>
         <member name="P:Uno.Card.Image">
-            <summary> 
+            <summary>
             The image used to present this card on the interface
             </summary>
         </member>
@@ -457,11 +467,11 @@
         </member>
         <member name="M:Uno.GameController.SelectCard(Uno.Card)">
             <summary>
-            Choose a card for the current play to play
+            Choose a card for the current player to play
             </summary>
             <param name="card"></param>
         </member>
-        <member name="M:Uno.GameController.PlaySelectedCard(Uno.Card)">
+        <member name="M:Uno.GameController.SelectCard(Uno.Card,Uno.Player,System.Boolean)">
             <summary>
             Choose a card for the current player to play
             </summary>
@@ -512,11 +522,6 @@
             </summary>
             <param name="initial">The index of the current player</param>
             <returns>The index of the next player</returns>
-        </member>
-        <member name="M:Uno.GameController.flipOtherCards(System.Collections.Hashtable,Uno.Game.GamePlayer,Uno.GameView)">
-            <summary>
-            Set only current player's cards to be visible
-            </summary>
         </member>
         <member name="M:Uno.GameController.setupCurrentPlayer">
             <summary>
@@ -673,23 +678,6 @@
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
         <member name="M:Uno.GameView.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="F:Uno.HandSwapSelect.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:Uno.HandSwapSelect.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:Uno.HandSwapSelect.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
@@ -908,6 +896,16 @@
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
+        <member name="P:Uno.Properties.Resources.bsa">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.bt">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="P:Uno.Properties.Resources.CardTable">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
@@ -1004,6 +1002,16 @@
             </summary>
         </member>
         <member name="P:Uno.Properties.Resources.gs">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.gsa">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.gt">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
@@ -1118,6 +1126,16 @@
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
+        <member name="P:Uno.Properties.Resources.rsa">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.rt">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="P:Uno.Properties.Resources.StartupWindow">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
@@ -1204,6 +1222,16 @@
             </summary>
         </member>
         <member name="P:Uno.Properties.Resources.ys">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.ysa">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Uno.Properties.Resources.yt">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>

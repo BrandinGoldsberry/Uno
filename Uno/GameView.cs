@@ -17,7 +17,6 @@ namespace Uno
         private Game game;
         private GameController controller;
 
-        // Stores the relationship between cards and their picture boxes on the form
         public Hashtable cardsViews = new Hashtable(108);
 
         private List<Label> playerLabels = new List<Label>(Game.MAXPLAYERS);
@@ -26,7 +25,7 @@ namespace Uno
         // Timer to flash the end game button highlight
         Timer endGameHighlightTimer = new Timer();
 
-        // Is this the first time the view has been drawn?
+        // Is this the first time the view has been drawn
         bool first = true;
 
         // Doesn't prompt the user to close the form
@@ -53,8 +52,6 @@ namespace Uno
             // Save the parameters
             game = newGame;
             controller = gameController;
-
-            
 
 
             // Create picture boxes for each card, and store them in a hash table
@@ -130,14 +127,12 @@ namespace Uno
             }
         }
 
-        
-
         /*
          * Using Background images without reducing performance
          * http://blogs.msdn.com/mhendersblog/archive/2005/10/12/480156.aspx
          * and http://www.eggheadcafe.com/software/aspnet/30750705/help-with-form-painting-p.aspx
          */
-        
+
         private Bitmap renderBmp;
 
         public override Image BackgroundImage
@@ -157,7 +152,6 @@ namespace Uno
                 return renderBmp;
             }
         }
-        
 
 
         /// <summary>
@@ -321,7 +315,6 @@ namespace Uno
             
             // Set the tag so its card can be easily retrieved
             pictureBox.Tag = card;
-            
             // Set some properties
             pictureBox.Image = card.Image;
             pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -479,7 +472,6 @@ namespace Uno
         {
             // First, check if it's ok to end the game
             if (!endGame("End Game", "Are you sure you want to end this game?")) return;
-            
             // Tell the controller to end the game
             controller.EndGame();
         }
@@ -491,7 +483,6 @@ namespace Uno
         }
 
 
-        
         void endGameHighlightTimer_Tick(object sender, EventArgs e)
         {
             // Alterate the visibility property of the end highlighter on each timer tick

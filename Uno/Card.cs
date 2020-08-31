@@ -78,9 +78,19 @@ namespace Uno
             Draw2,
 
             /// <summary>
+            /// A TNT card that when played, the next person to draw a card get 4 cards
+            /// </summary>
+            TNT,
+
+            /// <summary>
             /// A skip card
             /// </summary>
             Skip,
+
+            /// <summary>
+            /// A skip all card that skips everyone and comes back to you
+            /// </summary>
+            SkipAll,
 
             /// <summary>
             /// A reverse card
@@ -108,6 +118,7 @@ namespace Uno
         private CardFace face;
         private Image image;
 
+
         ///////////////////////////////////////////////////////////////////////////////////////
         // Properties
         ///////////////////////////////////////////////////////////////////////////////////////
@@ -129,13 +140,14 @@ namespace Uno
             get { return face; }
         }
 
-        /// <summary> 
+        /// <summary>
         /// The image used to present this card on the interface
         /// </summary>
         public Image Image
         {
             get { return ImageForCard(color, face); }
             set { image = value; }
+
         }
 
 
@@ -334,8 +346,16 @@ namespace Uno
                     ret = "r";
                     break;
 
+                case CardFace.TNT:
+                    ret = "t";
+                    break;
+
                 case CardFace.Skip:
                     ret = "s";
+                    break;
+
+                case CardFace.SkipAll:
+                    ret = "sa";
                     break;
 
             }
@@ -384,9 +404,9 @@ namespace Uno
                     {
                         card.Image = ImageForCard(card.Color, card.Face);
                         //gameview.cardsViews[card] = gameview.createPictureBoxForCard(card);
-                        foreach(DictionaryEntry cardView in gameview.cardsViews)
+                        foreach (DictionaryEntry cardView in gameview.cardsViews)
                         {
-                            if(cardView.Key == card)
+                            if (cardView.Key == card)
                             {
                                 ((PictureBox)cardView.Value).Image = ImageForCard(card.Color, card.Face);
                             }
@@ -410,7 +430,7 @@ namespace Uno
                 }
                 else
                 {
-                    foreach(Card card in ((Game.GamePlayer)player.Value).Cards)
+                    foreach (Card card in ((Game.GamePlayer)player.Value).Cards)
                     {
                         card.Image = Properties.Resources.back;
                         //gameview.cardsViews[card] = gameview.createPictureBoxForCard(card);
@@ -427,7 +447,6 @@ namespace Uno
             gameview.ReDraw();
             gameview.Refresh();
         }
-
 
         /// <summary>
         /// Check if a color/face combination is a valid Uno card
@@ -468,8 +487,10 @@ namespace Uno
                 case CardFace.Draw2:
                 case CardFace.Reverse:
                 case CardFace.Skip:
+                case CardFace.SkipAll:
                     value = 20;
                     break;
+                case CardFace.TNT:
                 case CardFace.None:
                 case CardFace.Draw4:
                     value = 50;

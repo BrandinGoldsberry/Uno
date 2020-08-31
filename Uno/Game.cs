@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Collections;
 
 namespace Uno
 {
@@ -493,13 +495,6 @@ namespace Uno
             public GamePlayer(Player inputPlayer)
             {
                 player = inputPlayer;
-            }
-
-            public void SwapHandsWithPlayer(GamePlayer ToSwap)
-            {
-                List<Card> CardHolder = ToSwap.cards;
-                ToSwap.cards = cards;
-                cards = CardHolder;
             }
 
         }
