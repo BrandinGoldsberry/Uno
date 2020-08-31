@@ -729,59 +729,6 @@ namespace Uno
             }
         }
 
-        private void PlayerSwapHands(int? PlayerIndex)
-        {
-            int Player = PlayerIndex ?? default;
-            Game.GamePlayer TargetPlayer = game.PlayersCards[game.Players[Player]] as Game.GamePlayer;
-            Game.GamePlayer CurrentPlayer = game.PlayersCards[game.Players[game.CurrentPlayerIndex]] as Game.GamePlayer;
-
-            List<Card> targetPlayerCards = TargetPlayer.Cards;
-            List<Card> currentPlayerCards = CurrentPlayer.Cards;
-
-            TargetPlayer.Cards = currentPlayerCards;
-            CurrentPlayer.Cards = targetPlayerCards;
-            nextPlayer();
-            gameView.ReDraw();
-        }
-
-        public void SwapHandsOnSeven()
-        {
-            if (game.CurrentPlayer.Type != Player.PlayerType.Human)
-            {
-                int smallestHand = int.MaxValue;
-                int handOwner = -1;
-                for (int i = 0; i < game.PlayersCards.Count; i++)
-                {
-                    Game.GamePlayer currentPlayerCheck = (Game.GamePlayer)game.PlayersCards[game.Players[i]];
-                    if (currentPlayerCheck.Player.Name == game.CurrentPlayer.Name)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        if (smallestHand > currentPlayerCheck.Cards.Count)
-                        {
-                            handOwner = i;
-                            smallestHand = currentPlayerCheck.Cards.Count;
-                        }
-                    }
-                }
-                if (handOwner != -1)
-                {
-                    PlayerSwapHands(handOwner);
-                }
-            }
-            else
-            {
-                HandSwapSelect handSwapSelect = new HandSwapSelect(game.NumberOfPlayers, game.CurrentPlayerIndex);
-                DialogResult result = handSwapSelect.ShowDialog();
-                if (result == DialogResult.OK)
-                {
-                    PlayerSwapHands(handSwapSelect.ClickResult);
-                }
-            }
-        }
-
         /// <summary>
         /// Implement the actions of the action cards on the next player
         /// </summary>
