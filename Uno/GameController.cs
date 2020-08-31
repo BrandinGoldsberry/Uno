@@ -240,7 +240,7 @@ namespace Uno
                 if (game.CurrentGamePlayer.Finished)
                     game.CurrentGamePlayer.FinishRank = game.NumberOfFinishedPlayers - 1;
 
-                if (!game.Options.EnableTeams && game.NumberOfFinishedPlayers == 1)
+                if (!game.Options.EnableTeams && game.NumberOfFinishedPlayers == game.NumberOfPlayers - 1)
                 {
                     // Show the final results
                     Program.NewSortedPlayersView(game);
