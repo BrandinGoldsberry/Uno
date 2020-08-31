@@ -107,6 +107,10 @@
     <Compile Include="GameView.Designer.cs">
       <DependentUpon>GameView.cs</DependentUpon>
     </Compile>
+    <Compile Include="HandSwapSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HandSwapSelect.Designer.cs" />
     <Compile Include="Help.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +129,7 @@
     <EmbeddedResource Include="GameView.resx">
       <DependentUpon>GameView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HandSwapSelect.resx" />
     <EmbeddedResource Include="Help.resx">
       <DependentUpon>Help.cs</DependentUpon>
     </EmbeddedResource>
